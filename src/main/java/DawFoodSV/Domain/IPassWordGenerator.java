@@ -2,15 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package DawFoodSV.Infraestructure;
+package DawFoodSV.Domain;
 
 /**
  *
  * @author snavgar
  */
-public interface IDataBase {
-     
-    public ArrayList<IProduct> DevolverTodos();
-    public IProduct busquedaProducto();
+public interface IPassWordGenerator {
     
 }

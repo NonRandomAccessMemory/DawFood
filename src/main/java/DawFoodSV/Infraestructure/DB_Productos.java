@@ -17,5 +17,7 @@ public class DB_Productos {
     
     /*EMULO SER UNA BASE DE DATOS*/
     private ArrayList<Producto> m_BaseDeDatos= new ArrayList<Producto>();
+    
+    /*Implementar metodos*/
 
 }

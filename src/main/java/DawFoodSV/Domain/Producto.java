@@ -10,4 +10,5 @@ package DawFoodSV.Domain;
  */
 public class Producto {
     /**/
+    
 }

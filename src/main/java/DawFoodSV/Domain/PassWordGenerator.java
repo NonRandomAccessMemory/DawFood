@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DawFoodSV.Infraestructure;
+package DawFoodSV.Domain;
 
 /**
  *
  * @author snavgar
  */
-public class PasarelaDePago {
+public class PassWordGenerator {
     
-    /*Implementar LOGICA DE PASARELA DE PAGO*/
 }
