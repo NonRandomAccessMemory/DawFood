@@ -8,7 +8,11 @@ package DawFoodSV.Domain;
  *
  * @author snavgar
  */
-public class Producto {
-    /*AÑADIR METODOS*/
-    
+public class TarjetaCredito {
+    /*IMPLEMENTAR ATRIBUTOS*/
+    /*número de tarjeta
+      la fecha de vencimiento
+      el CVV
+      así como el nombre del titular de la tarjeta
+      el saldo que tiene.*/
 }

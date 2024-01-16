@@ -4,6 +4,9 @@
  */
 package DawFoodSV.Infraestructure;
 
+import DawFoodSV.Domain.IProduct;
+import java.util.ArrayList;
+
 /**
  *
  * @author snavgar

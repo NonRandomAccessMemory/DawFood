@@ -9,5 +9,10 @@ package DawFoodSV.Domain;
  * @author snavgar
  */
 public interface IProduct {
+   
+    public void getNombre();
+    public void setNombre();
+    public void getPrecio();
+    public void setPrecio();
     
 }
