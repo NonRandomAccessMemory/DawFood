@@ -16,20 +16,18 @@ public class BD_Falsa {
    
     public BD_Falsa(){
         /*AÑADIR OBJETOS POR DEFECTO*/
+        m_BDProducto.add(new Producto(1,"Estofado","Estofado de ternera",E_Categoria.Comida,E_Iva.Siete,12));
     }
     
-    public Producto getProductoPorNombre(){
-        /*Implementar*/
-        return;
-    }
-    public Producto getProductoPorID(){
-        /*Implementar*/
-        return;
-    }
-    public double getPrecio(){
-        /*Implementar*/
-        return;
+    public ArrayList<Producto> DameTodo()
+    {
+        ArrayList<Producto> todo= new ArrayList<Producto>();
+        todo.addAll(m_BDProducto);
+        return todo;
     }
     
+    public ArrayList<Producto> BuscaPor(/*Introducir Consumer*/){
     
+        return:
+    }
 }

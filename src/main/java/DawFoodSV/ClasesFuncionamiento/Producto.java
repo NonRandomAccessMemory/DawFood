@@ -17,13 +17,13 @@ public class Producto {
       IVA y stock*/
     
     private int id;
-    private String descripcion;
+    private String descripcion,nombre;
     private E_Categoria Categoria;
     private E_Iva Iva;
     private int stock;
     
     /*Constructor*/
-    public Producto(int id,String descripcion, E_Categoria categoria,E_Iva iva,int stock){
+    public Producto(int id,String nombre,String descripcion, E_Categoria categoria,E_Iva iva,int stock){
         this.id=id;
         this.descripcion= descripcion;
         this.Categoria= categoria;
