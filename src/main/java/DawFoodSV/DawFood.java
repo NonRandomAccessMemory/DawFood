@@ -15,13 +15,58 @@ public class DawFood {
 
     public static void main(String[] args) {
         
-        String mensaje = """
+        String mensaje1 = """
                       
                          Bienvenidos a DawFood
                       
                       """;
         
-        JOptionPane.showInputDialog(null, mensaje);
+        JOptionPane.showInputDialog(null, mensaje1);
+        
+         String mensaje2 = """
+                      
+                         Enceder la maquina
+                      
+                      """;
+        
+        JOptionPane.showInputDialog(null, mensaje2);
+        String[] opcionesMenu1 = {
+            "1-. Cofigura tu menú",
+            "2-. Salir",
+            "3-. Otras opciones de Adimn",};
+        JOptionPane.showMessageDialog(null, opcionesMenu1);
+        String opcionElegida;
+        boolean continuar = true;
+         do {
+        
+        opcionElegida = (String) JOptionPane.showInputDialog(null,
+                "Elige una opción", "DawFood",
+                JOptionPane.QUESTION_MESSAGE, null,
+                opcionesMenu1, "1-. Cofigura tu menú");
+        switch (opcionElegida) {
+            case "1-. Cofigura tu menú" -> {
+                 
+                 
+            break;
+        }
+            
+            case "2-. Salir" -> {
+                continuar = false;
+                break;
+            }
+            case "3-. Otras opciones de Adimn"-> {
+                
+            break;
+            }
+            default -> {
+                continuar = false;
+            }
+            }
+        
+        
+        } while(continuar);
+        
+    }
         
         String[] opcionesMenu1 = {
             "1-. Cofigura tu menú",
