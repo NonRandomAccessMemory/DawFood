@@ -9,8 +9,7 @@ package DawFoodSV.ClasesFuncionamiento;
  * @author snavgar
  */
 public enum Tpv {
-    
-    public static int numComprasTotales = 0;
+    /*Añadir VALOR ESTATICO DE TOTAL DE VENTAS*/
     /*Añadir Numero de serie Unico*/
     
     /*Añadir llamada al menu principal*/

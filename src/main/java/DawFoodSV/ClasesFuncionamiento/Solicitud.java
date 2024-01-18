@@ -19,6 +19,8 @@ public class Solicitud {
     public Solicitud(){}
     /*SE PASA EL CONSUMER A LA BASE DE DATOS QUE DEVUELVE UNA LISTA DE PRODUCT*/
     
+    /*TODO*/
+     /*CONSUMERS*/
     public Producto getProductoPorNombre(){
         /*Implementar CONSUMER*/
         Consumer<Producto> solicitud;

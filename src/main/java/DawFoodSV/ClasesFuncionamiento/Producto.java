@@ -20,15 +20,17 @@ public class Producto {
     private String descripcion,nombre;
     private E_Categoria Categoria;
     private E_Iva Iva;
+    private double precio;
     private int stock;
     
     /*Constructor*/
-    public Producto(int id,String nombre,String descripcion, E_Categoria categoria,E_Iva iva,int stock){
+    public Producto(int id,String nombre,String descripcion, E_Categoria categoria,double precio,E_Iva iva,int stock){
         this.id=id;
         this.descripcion= descripcion;
         this.Categoria= categoria;
         this.Iva=iva;
         this.stock=stock;
+        this.precio= precio;
     }
     
     public int get_id(){
@@ -38,4 +40,7 @@ public class Producto {
     public void set_descripcion(){}
     public String get_categoria(){
             return this.Categoria.get_TipoProducto();}
+    public double get_precio(){
+        return this.precio;
+    }
 }

@@ -17,7 +17,7 @@ public class BD_Falsa {
    
     public BD_Falsa(){
         /*AÑADIR OBJETOS POR DEFECTO*/
-        m_BDProducto.add(new Producto(1,"Estofado","Estofado de ternera",E_Categoria.Comida,E_Iva.Siete,12));
+        m_BDProducto.add(new Producto(1,"Estofado","Estofado de ternera",E_Categoria.Comida,9.99,E_Iva.Siete,12));
     }
     
     public ArrayList<Producto> DameTodo()

@@ -16,16 +16,21 @@ public class Carrito {
     public Carrito(){
     }
     
-    public void AñadirElemento(Producto producto){
+    public void AñadirElemento(Producto producto,int cantidad){
        /*Añadir Elemento */
+       R_Producto producto = new R_producto(producto.id(),producto.nombre(),producto.precio(),cantidad);
+       m_carrito.add(producto);
     }
     
-    public void EliminarElemento(){}
+    public void EliminarElemento(int id){
+            /*Añadir iterator/Bucle para eliminar el objecto que tenga el mismo id*/
+    }
     
     public void ProcesarCompra(){
         /*Si la lista no está vacía*/
                 /*Recorrer la lista y calcular el precio total*/
                 /*Añadir la lista a las compras totales*/
+                /*Restar de la base datos la cantidad de elementos*/
                 /*Generar el ticket (ToSTRING)*/
          /*Si todo ha salido bien*/
             /*devuelve la lista que se guardar en la lista de compras del tpv*/
