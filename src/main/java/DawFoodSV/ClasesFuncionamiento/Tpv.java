@@ -9,6 +9,8 @@ package DawFoodSV.ClasesFuncionamiento;
  * @author snavgar
  */
 public enum Tpv {
+    
+    public static int numComprasTotales = 0;
     /*Añadir Numero de serie Unico*/
     
     /*Añadir llamada al menu principal*/

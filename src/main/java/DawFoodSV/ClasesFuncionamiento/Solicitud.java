@@ -27,17 +27,19 @@ public class Solicitud {
         /*Implementar CONSUMER*/
         return;
     }
-    public Producto getProductoPorID(){
+    public Producto getProductoPorID(int id){
         /*Implementar*/
         ArrayList<Producto> productos;
         Consumer<Producto> solicitud;
-        
-        return;
+        productos.addAll(db.BuscaPor(solicitud));
+        /*CAMBIAR EL NEW PRODUCTO POR EL PRODUCTO DEVUELTO DE LA COLECCION*/
+        return new Producto();
     }
     public double getPrecio(){
         /*Implementar*/
         ArrayList<Producto> productos;
         Consumer<Producto> solicitud;
+        productos.addAll(db.BuscaPor(solicitud));
         return;
     }
     

@@ -5,6 +5,7 @@
 package DawFoodSV.ClasesFuncionamiento;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  *
@@ -26,8 +27,23 @@ public class BD_Falsa {
         return todo;
     }
     
-    public ArrayList<Producto> BuscaPor(/*Introducir Consumer*/){
+    public ArrayList<Producto> BuscaPor(Consumer<Producto> busqueda){
     
-        return:
+        return new ArrayList<Producto>();
+    }
+    
+    public void BorrarElementoId(E_Usuario usuario, int id)
+    {
+        if(ComprobarUsuario(usuario)&& !(m_BDProducto.isEmpty()))
+        {
+            m_BDProducto.remove(id);
+        }
+        
+    }
+     private boolean ComprobarUsuario(E_Usuario usuario){
+         if(!(usuario.get_usuario().equalsIgnoreCase(E_Usuario.Administrador.get_usuario()))){
+             return false;
+         }
+         return true;
     }
 }
