@@ -30,8 +30,12 @@ public class BD_Falsa {
     }
     
     public ArrayList<Producto> BuscaPor(Consumer<Producto> busqueda){
-    
-        return new ArrayList<Producto>();
+        /*Iteradores*/
+        ArrayList<Producto> productos= new ArrayList<Producto>();
+            for(Producto producto : m_BDProducto) {
+                
+            }
+        return productos;
     }
     
     public Producto BuscaElemento(Consumer<Producto>busqueda){
@@ -40,6 +44,7 @@ public class BD_Falsa {
         if(productos.isEmpty() && productos.size()<1){
             System.out.println("No existen productos con ese termino de busqueda");
             }
+        /*Buscar y añadir a Productos los objetos seleccionados*/
         Producto producto = productos.get(0);
         return producto;
     }
@@ -52,11 +57,12 @@ public class BD_Falsa {
         }
         
     }
-    public void OrdenatePorPrecio(Comparator<Producto> busqueda){
-     /*Pasamos un consumer de comparación que ordenará la base de datos*/
+    
+    public void OrdenatePor(Comparator<Producto> busqueda){
      m_BDProducto.sort(busqueda);
     }
-     private boolean ComprobarUsuario(E_Usuario usuario){
+    
+    private boolean ComprobarUsuario(E_Usuario usuario){
          if(!(usuario.get_usuario().equalsIgnoreCase(E_Usuario.Administrador.get_usuario()))){
              return false;
          }

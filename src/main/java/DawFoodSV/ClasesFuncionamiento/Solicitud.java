@@ -28,25 +28,47 @@ public class Solicitud {
         return db.BuscaElemento(solicitud);
        
     }
+    public ArrayList<Producto> TodosLosProductos(){
+        return db.DameTodo();
+    }
+    
     public Producto getProductoPorID(int id){
         /*Implementar*/
         Producto producto;
-        Consumer<Producto> solicitud = (x)-> x.get_id();
+        Consumer<Producto> solicitud = (e1)-> e1.get_id().compareTo(id);
+        producto= db.BuscaElemento(solicitud);
+        return producto;
+    }
+    public Producto getProductoPorPrecio(int precio){
+        Producto producto;
+        Consumer<Producto> solicitud = (e1)-> e1.get_id().compareTo(precio);
         producto= db.BuscaElemento(solicitud);
         return producto;
     }
     public double getPrecio(int nombre){
         /*Implementar*/
         ArrayList<Producto> productos;
-        Consumer<Producto> solicitud = (x) -> x.get_precio();
+        Consumer<Producto> solicitud = (x) -> x.get_id();
         productos.addAll(db.BuscaPor(solicitud));
-        return ;
+        return productos.get(0).get_precio();
     }
     
     public void OrdenatePorPrecio(){
     /*implementar*/
     Comparator<Producto> criterioPrecio= (e1,e2)-> (int) (e1.get_precio()- e2.get_precio());
-     db.OrdenatePorPrecio(criterioPrecio);
+     db.OrdenatePor(criterioPrecio);
+    }
+    
+     public void OrdenatePorID(){
+    /*implementar*/
+    Comparator<Producto> criterioPrecio= (e1,e2)-> (int) (e1.get_id()- e2.get_id());
+     db.OrdenatePor(criterioPrecio);
+    }
+     
+      public void OrdenatePorCategoria(){
+    /*implementar*/
+    Comparator<Producto> criterioPrecio= (e1,e2)-> (int) (e1.get_categoria().compareToIgnoreCase(e2.get_categoria()));
+     db.OrdenatePor(criterioPrecio);
     }
     
 }

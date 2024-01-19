@@ -16,7 +16,7 @@ public class Producto {
       precio
       IVA y stock*/
     
-    private int id;
+    private Integer id;
     private String descripcion,nombre;
     private E_Categoria Categoria;
     private E_Iva Iva;
@@ -33,7 +33,7 @@ public class Producto {
         this.precio= precio;
     }
     
-    public int get_id(){
+    public Integer get_id(){
        return this.id;}
     public String get_nombre(){
        return this.nombre;}
