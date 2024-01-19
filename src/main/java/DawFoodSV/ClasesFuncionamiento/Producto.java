@@ -35,6 +35,8 @@ public class Producto {
     
     public int get_id(){
        return this.id;}
+    public String get_nombre(){
+       return this.nombre;}
     public String get_descripcion(){
             return this.descripcion;}
     public void set_descripcion(){}
