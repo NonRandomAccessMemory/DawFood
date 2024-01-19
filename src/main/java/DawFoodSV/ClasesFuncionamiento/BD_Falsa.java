@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * @author snavgar
  */
 public class BD_Falsa {
+    
+    
     /*EMULO SER UNA BASE DE DATOS*/
     public ArrayList<Producto> m_BDProducto= new ArrayList<Producto>();
    
@@ -20,16 +22,16 @@ public class BD_Falsa {
     
     public Producto getProductoPorNombre(){
         /*Implementar*/
-        return;
+        return null;
     }
     public Producto getProductoPorID(){
         /*Implementar*/
-        return;
+        return null;
     }
-    public double getPrecio(){
+    /*public double getPrecio(){
         /*Implementar*/
-        return;
-    }
+        //return null;
+    //}
     
     
 }
