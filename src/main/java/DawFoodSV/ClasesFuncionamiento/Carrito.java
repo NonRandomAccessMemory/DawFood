@@ -68,7 +68,7 @@ public class Carrito {
             
             if(estado){
                 ProcesarTicket();
-                Tpv.VENTAS_TOTALES+=1;
+                Tpv.VENTASTOTALES+=1;
              /*imprimir el ticket final*/
             }
             else{
