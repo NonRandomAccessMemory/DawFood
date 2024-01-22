@@ -13,4 +13,7 @@ public enum E_Iva {
     private int iva;
     private E_Iva(int iva){
     this.iva=iva;}
+    
+    public int get_iva(){
+       return this.iva;}
 }

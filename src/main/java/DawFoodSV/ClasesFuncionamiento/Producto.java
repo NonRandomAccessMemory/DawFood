@@ -20,9 +20,9 @@ public class Producto {
     
     private Integer id;
     private String descripcion,nombre;
-    private E_Categoria Categoria;
-    private E_SubCategoria subCategoria;
-    private E_Iva Iva;
+    public E_Categoria Categoria;
+    public E_SubCategoria subCategoria;
+    public E_Iva Iva;
     private Double precio;
     private int stock;
     
