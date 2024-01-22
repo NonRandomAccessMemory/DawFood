@@ -69,6 +69,7 @@ public class Carrito {
             if(estado){
                 ProcesarTicket();
                 Tpv.VENTASTOTALES+=1;
+                /*Crear el objeto TIcket y añadirlo a la lista*/
              /*imprimir el ticket final*/
             }
             else{

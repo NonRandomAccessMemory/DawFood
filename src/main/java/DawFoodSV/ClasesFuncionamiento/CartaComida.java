@@ -48,6 +48,18 @@ public class CartaComida {
     postres.sort(comparador);
    }
    
+   public ArrayList<Producto> get_Comidas(){
+       return (ArrayList<Producto>)this.comidas.clone();
+    }
+    public ArrayList<Producto> get_Bebidas(){
+       return (ArrayList<Producto>)this.bebidas.clone();
+    }
+    public ArrayList<Producto> get_Postres(){
+        return (ArrayList<Producto>)this.postres.clone();
+    }
+    
+    
+    
    public void FinalizarCompra(){
        
    }
