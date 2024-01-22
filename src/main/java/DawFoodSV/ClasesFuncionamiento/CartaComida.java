@@ -38,7 +38,7 @@ public class CartaComida {
                 postres.add(producto);
             break;
         }
-       }
+      }
 }
    
    public void Ordenar(){
@@ -46,5 +46,9 @@ public class CartaComida {
     comidas.sort(comparador);
     bebidas.sort(comparador);
     postres.sort(comparador);
+   }
+   
+   public void FinalizarCompra(){
+       
    }
 }

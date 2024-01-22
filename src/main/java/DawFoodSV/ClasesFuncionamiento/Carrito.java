@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author snavgar
  */
 public class Carrito {
+    private PasarelaDePago pasarelaPago= new PasarelaDePago();
     private ArrayList<ProductoVenta> m_carrito= new ArrayList<>();
     
     public Carrito(){
@@ -57,5 +58,23 @@ public class Carrito {
                 /*Generar el ticket (ToSTRING)*/
          /*Si todo ha salido bien*/
             /*devuelve la lista que se guardar en la lista de compras del tpv*/
+            double totalAcobrar=0;
+            for(ProductoVenta pv : m_carrito){
+                totalAcobrar+= (pv.get_precio()*(pv.Iva.get_iva()));
+            }
+            /*Añadir con optionpane el numero de tarjeta a validar*/
+            String numeroTarjeta=new String();
+            boolean estado=pasarelaPago.ProcesoDePago(totalAcobrar,numeroTarjeta);
+            
+            if(estado){
+                ProcesarTicket();
+                Tpv.VENTAS_TOTALES+=1;
+             /*imprimir el ticket final*/
+            }
+            else{
+                /*INFORMAR DEL ERROR PRODUCIDO y de que no se ha cobrado*/
+                /*VOLVER AL MENU PRINCIPAL*/}
     }
+    
+    private void ProcesarTicket(){}
 }

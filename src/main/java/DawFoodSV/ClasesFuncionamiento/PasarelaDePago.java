@@ -19,10 +19,11 @@ public class PasarelaDePago {
     /*Añadir tarjetas de pago y sus fondos*/}
     
     
-public boolean ProcesoDePago(Double cantidad,String numeroTarjeta){
+public boolean ProcesoDePago(double cantidad,String numeroTarjeta){
     TarjetaCredito tarjeta=null;
-    String usuariocvv;
-    String usuariofecha;
+    /*añadir opciones de JOptionPane*/
+    String usuariocvv= new String();
+    String usuariofecha= new String();
     if(!(tarjetas.isEmpty())){
         for(TarjetaCredito p : tarjetas){
              if(p.getNumTarjeta().contentEquals(numeroTarjeta)){
@@ -33,11 +34,13 @@ public boolean ProcesoDePago(Double cantidad,String numeroTarjeta){
              if(tarjeta.getFecha().equalsIgnoreCase(usuariofecha)){
                   tarjeta.restarFondos(cantidad);
                   return true;}
-                 else{System.out.println("ERROR FECHA INCORRECTA");}
+                 else{System.out.println("ERROR FECHA INCORRECTA");
+                        return false;}
                  }
-           else{System.out.println("CVV INCORRECTO");}
+           else{System.out.println("CVV INCORRECTO");
+                return false;}
        }
-
+    return false;
    }
         
 }
