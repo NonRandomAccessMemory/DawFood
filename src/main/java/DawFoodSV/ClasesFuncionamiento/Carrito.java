@@ -11,20 +11,29 @@ import java.util.ArrayList;
  * @author snavgar
  */
 public class Carrito {
-    private ArrayList<Producto> m_carrito= new ArrayList<Record>();
+    private ArrayList<Producto> m_carrito= new ArrayList<>();
     
     public Carrito(){
     }
     
     public void AñadirElemento(Producto producto,int cantidad){
-      ProductoVenta productoventa= new ProductoVenta(producto.get_id(),producto.get_nombre(),producto.get_descripcion(),
-                                                    producto.get_categoria(),producto.get_SubCategoria(),
-                                                    producto.get_precio(),cantidad); 
-       m_carrito.add(productoventa);
+        /*On development*/
+      /*ProductoVenta productoventa= new ProductoVenta(producto.get_id(),producto.get_nombre()
+                                                    ,E_Categoria.valueOf(producto.get_categoria())
+                                                    ,E_SubCategoria.valueOf(producto.get_SubCategoria()),
+                                                    producto.get_precio(),cantidad);
+       m_carrito.add(productoventa);*/
     }
     
     public void EliminarElemento(int id){
-            /*Añadir iterator/Bucle para eliminar el objecto que tenga el mismo id*/
+            for (Producto p : m_carrito)
+            {
+                if(p.get_id()== id)
+                {
+                    m_carrito.remove(p);
+                }
+            }
+          
     }
     
     public void ProcesarCompra(){
