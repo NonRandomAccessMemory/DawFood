@@ -11,70 +11,62 @@ import javax.swing.JOptionPane;
  * @author vickyfg
  */
 public class Menu {
+
     //Menú de encendidio 
-        public void Menu1(){
+    public void Menu1() {
+        //Menú encender maquina
         JOptionPane.showMessageDialog(null, "Bienvenidos a DawFood");
-            
-        String[] opcionesMenu1 = {
-            "1-. Encender el TPV",
-            "2-. Salir",};
-        
-        String opcionElegida;
+        String[] botones = {"Encender", "StandBy"};
         boolean continuar = true;
         do {
-            opcionElegida = (String) JOptionPane.showInputDialog(null,
-                    "Encendiendo la maquina...", "DawFood",
-                    JOptionPane.QUESTION_MESSAGE, null,
-                    opcionesMenu1, "1-. Encender el TPV");
-            switch (opcionElegida) {
-                case "1-. Encender el TPV" -> {
-                    
+            int variable = JOptionPane.showOptionDialog(null, "¿Quieres encender el TPV?",
+                    "Bienvenidos a DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones, botones[0]);
+            switch (variable) {
+                case 0 -> {
+
                     Menu2();
                     break;
                 }
 
+                case 1 -> {
+                    continuar = false;
+                    break;
+                }
+
                 default -> {
                     continuar = false;
                 }
             }
 
         } while (continuar);
-
     }
+
     //Método para elegir menu de administración o usuario
-    public void Menu2(){
-    String mensaje3 = """
-                      
-                          Menú de administración
-                      
-                      """;
-
-    JOptionPane.showMessageDialog(null, mensaje3);
-    
-    String[] opcionesMenu2 = {
-            "1-. Menú Admin",
-            "2-. Menú usuario",
-            "3-. Atras"};
-              
-        String opcionElegida2;
+    public void Menu2() {
+        //Elección tipo usuario
+        
+        String[] botones1 = {"Modo Administrador", "Modo Usuario", "Atrás"};
         boolean continuar = true;
+
         do {
-            opcionElegida2 = (String) JOptionPane.showInputDialog(null,
-                    "hola", "DawFood",
-                    JOptionPane.QUESTION_MESSAGE, null,
-                    opcionesMenu2, "1-. Menú Admin");
-            switch (opcionElegida2) {
-                case "1-. Menú Admin" -> {
+            int variable1 = JOptionPane.showOptionDialog(null, "Modo de acceso: ",
+                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones1, botones1[0]);
+            switch (variable1) {
+                //Opcion apertura de menú para admin
+                case 1 -> {
+                    Admin();
+                    break;
+                }
+                //Opcion apertura menú para user
+                case 2 -> {
+                    User();
+                    break;
+                }
+                
+                //Opcion volver menu encendido
+                case 3 -> {
                     
-
-                    break;
-                }
-                case "2-. Menú usuario" -> {
-
-                    break;
-                }
-                case "3-. Atras" -> {
-
+                    continuar = false;
                     break;
                 }
 
@@ -85,7 +77,15 @@ public class Menu {
 
         } while (continuar);
     }
-    
-}
-    
 
+    
+    public void Admin(){
+        
+        JOptionPane.showMessageDialog(null, "Modo mantenimiento ");
+        String contraseñaIntroducida = JOptionPane.showInputDialog("Introduzca constraseña del TPV: ");
+        //String contraseñaIntroducida = Integer.parseInt(eleccion);
+        JOptionPane.showMessageDialog(null, "");
+    }
+    public void User(){
+    }
+}
