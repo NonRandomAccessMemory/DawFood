@@ -13,9 +13,12 @@ import javax.swing.JOptionPane;
 public class Menu {
 
     //Menú de encendidio 
-    public void Menu1() {
+    public void iniciarTPV() {
         //Menú encender maquina
-        JOptionPane.showMessageDialog(null, "Bienvenidos a DawFood");
+        JOptionPane.showConfirmDialog(null, "Bienvenidos a DawFood", "DAW FOOD",JOptionPane.DEFAULT_OPTION);
+        //String[] options = {"Mary", "Nora", "Anna", "Lauren"};
+        //int x = JOptionPane.showOptionDialog(null, "Lauren's mom had four kids: Maria, Martha, Margaret...",
+        //        "The missing kid", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         String[] botones = {"Encender", "StandBy"};
         boolean continuar = true;
         do {
@@ -29,7 +32,7 @@ public class Menu {
                 }
 
                 case 1 -> {
-                    continuar = false;
+                    iniciarTPV();
                     break;
                 }
 
@@ -53,18 +56,18 @@ public class Menu {
                     "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones1, botones1[0]);
             switch (variable1) {
                 //Opcion apertura de menú para admin
-                case 1 -> {
+                case 0 -> {
                     Admin();
                     break;
                 }
                 //Opcion apertura menú para user
-                case 2 -> {
+                case 1 -> {
                     User();
                     break;
                 }
                 
                 //Opcion volver menu encendido
-                case 3 -> {
+                case 2 -> {
                     
                     continuar = false;
                     break;

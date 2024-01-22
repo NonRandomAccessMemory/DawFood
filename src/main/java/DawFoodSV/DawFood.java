@@ -13,8 +13,8 @@ public class DawFood {
 
     public static void main(String[] args) {
         Menu menu = new Menu();
-        //menu.Menu1();
-        menu.Admin();
+        menu.iniciarTPV();
+        //menu.Admin();
     }
    
     }

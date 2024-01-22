@@ -32,4 +32,3 @@ Uno de los siguientes caracteres especiales: # $ % &  ( ) * + , - .  : ; < = > @
                                                                            
 }
     
-}
