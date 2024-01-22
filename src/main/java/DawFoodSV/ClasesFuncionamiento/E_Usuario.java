@@ -8,12 +8,15 @@ package DawFoodSV.ClasesFuncionamiento;
  *
  * @author snavgar
  */
-public enum E_Iva {
-    Siete(7),Doce(12);
-    private int iva;
-    private E_Iva(int iva){
-    this.iva=iva;}
+public enum E_Usuario {
+    Usuario("usuario"),Administrador("administrador");
     
-    public int get_iva(){
-       return this.iva;}
+    private String usuario;
+    private E_Usuario(String usuario){
+        this.usuario= usuario;
+    }
+    
+    public String get_usuario(){
+        return this.usuario;
+    }
 }
