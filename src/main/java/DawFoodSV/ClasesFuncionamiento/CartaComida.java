@@ -100,6 +100,38 @@ public class CartaComida {
    public ArrayList<Producto> get_Postres(){
         return (ArrayList<Producto>)this.postres.clone();}
    
+   /*Devuelvo una lista de productos basados en su categoria y subcategoria pasame una Categoria(enum) y subCategoria(enum) GRACIAS*/
+   public ArrayList<Producto> devolverPorSubcategoria(E_Categoria categoria,E_SubCategoria subcategoria){
+       ArrayList<Producto> productosPorSubcategoria= new ArrayList<>();
+       
+       switch(categoria.get_TipoProducto()){
+           case "Bebida":
+                for(Producto p : bebidas){
+                     if(p.subCategoria.equals(subcategoria)){
+                        productosPorSubcategoria.add(p);
+                        }
+                }
+           break;
+           case "Comida":
+                for(Producto p : bebidas){
+                     if(p.subCategoria.equals(subcategoria)){
+                        productosPorSubcategoria.add(p);
+                    }
+                }
+           break;
+           
+           case "Postre":
+                for(Producto p : bebidas){
+                     if(p.subCategoria.equals(subcategoria)){
+                        productosPorSubcategoria.add(p);
+                        }
+                    }
+           break;
+        }
+        return productosPorSubcategoria;
+}    
+       
+       
    public boolean ModificarProducto(Producto p){
         //Dado un objeto pre seleccionado p
         //Modificar el objeto seleccionado previamente sin cambiar id
@@ -107,7 +139,7 @@ public class CartaComida {
         //si el cambio ha sido erroneo devolver false
         return true;
         }
-   
-   
-}
+       
+   }
+
     

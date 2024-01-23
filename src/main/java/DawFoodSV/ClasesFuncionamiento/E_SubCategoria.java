@@ -16,4 +16,5 @@ public enum E_SubCategoria {
             this.categoria= categoria;}
     public String get_SubTipoProducto(){
         return this.categoria;}
+    
 }
