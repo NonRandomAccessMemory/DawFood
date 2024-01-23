@@ -57,7 +57,7 @@ public class CartaComida {
                 for(Producto p : bebidas){
                     if(producto.get_id().intValue() == p.get_id()){
                     bebidas.remove(p);
-                    break;
+                    return true;
                     }
                 }
             break;
@@ -65,6 +65,7 @@ public class CartaComida {
                 for(Producto p : comidas){
                     if(producto.get_id().intValue() == p.get_id()){
                     comidas.remove(p);
+                    return true;
                     }
                 }
             break;
@@ -72,10 +73,13 @@ public class CartaComida {
                 for(Producto p : postres){
                     if(producto.get_id().intValue() == p.get_id()){
                     postres.remove(p);
+                    return true;
                     }
                 }
             break;
         }
+   }
+   return false;
    }
    
    public void Ordenar(){
@@ -85,15 +89,16 @@ public class CartaComida {
     postres.sort(comparador);
    }
    
+   /*Devuelvo TODA LA LISTA DE COMIDAS*/
    public ArrayList<Producto> get_Comidas(){
-       return (ArrayList<Producto>)this.comidas.clone();
-    }
+       return (ArrayList<Producto>)this.comidas.clone();}
+  
+   /*Devuelvo Toda la lista de Bebidas*/
    public ArrayList<Producto> get_Bebidas(){
-       return (ArrayList<Producto>)this.bebidas.clone();
-    }
+       return (ArrayList<Producto>)this.bebidas.clone();}
+   /*Devuelvo toda la lista de Postres*/
    public ArrayList<Producto> get_Postres(){
-        return (ArrayList<Producto>)this.postres.clone();
-    }
+        return (ArrayList<Producto>)this.postres.clone();}
    
    public boolean ModificarProducto(Producto p){
         //Dado un objeto pre seleccionado p
@@ -104,6 +109,5 @@ public class CartaComida {
         }
    
    
-   }
+}
     
-   
