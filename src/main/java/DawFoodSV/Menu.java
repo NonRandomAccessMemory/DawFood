@@ -110,10 +110,13 @@ public class Menu {
             } else {
                 //Sale del bucle y continua;
                 JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
-                continuar3 = false;
+                opcionElegida();
             }
         } while (continuar3);
+    }
 
+
+    private void opcionElegida() {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
             "4-. Consultar las ventas realizadas.", "5-. Atrás"};
@@ -140,6 +143,7 @@ public class Menu {
                     break;
                 }
                 case "4-. Consultar las ventas realizadas." -> {
+                    consultarVentas();
                     break;
                 }
                 case "5-. Atrás" -> {
@@ -152,6 +156,43 @@ public class Menu {
                 }
             }
         } while (continuar);
+    }
+
+    private void consultarVentas() {
+        String[] opcionesMenuVentas = {"1-. En un día concreto.",
+            "2-. Hasta una fecha concreta.", "3-. Todas las ventas que haya registradas.", "4.- Atrás"};
+        JOptionPane.showMessageDialog(
+                null, "Consultar las ventas realizadas: ", "DawFood - Modo Mantenimiento", 0);
+        String opcionesElegidaVentas;
+        boolean continuar = true;
+
+        do {
+            opcionesElegidaVentas = (String) JOptionPane.showInputDialog(null,
+                    "Elige una opción", "DawFood - Modo Mantenimiento",
+                    JOptionPane.QUESTION_MESSAGE, null,
+                    opcionesMenuVentas, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
+
+            switch (opcionesElegidaVentas) {
+                case "1-. En un día concreto." -> {
+                    break;
+                }
+                case "2-. Hasta una fecha concreta." -> {
+                    break;
+                }
+                case "3-. Todas las ventas que haya registradas." -> {
+                    break;
+                }
+                case "4-. Atrás" -> {
+                    opcionElegida();
+                    break;
+                }
+                default -> {
+                    iniciarTPV();
+                    System.exit(0);
+                }
+            }
+        } while (continuar);
+
     }
 
     private void modoUser() {
