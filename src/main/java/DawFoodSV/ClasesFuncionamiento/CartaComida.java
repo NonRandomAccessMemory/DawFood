@@ -18,9 +18,19 @@ public class CartaComida {
      
    public CartaComida(){
    comidas.add(new Producto(1,"Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
-   postres.add(new Producto(1,"Mochi","heladojapo",E_Categoria.Postre,E_SubCategoria.Helados,9.99,E_Iva.Siete,12));
+   comidas.add(new Producto(3,"Hamburgusa Mcfit","Hamburguesa de ternera que sigue engondando",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
+   comidas.add(new Producto(2,"Hamburgusa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
+   
+   postres.add(new Producto(1,"Mochi","heladojapo",E_Categoria.Postre,E_SubCategoria.Helados,4.99,E_Iva.Siete,12));
+   postres.add(new Producto(1,"CafeConHelado","helado Amuricano",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
+   postres.add(new Producto(2,"FrigoPie","helado con leche",E_Categoria.Postre,E_SubCategoria.Helados,3.99,E_Iva.Siete,12));
+   postres.add(new Producto(3,"ConoChocolateNata","Helado de cono con chocolate",E_Categoria.Postre,E_SubCategoria.Helados,9.99,E_Iva.Siete,12));
+   postres.add(new Producto(1,"CremaHelada","helado natural",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
+   
    bebidas.add(new Producto(1,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,9.99,E_Iva.Siete,12));
-    
+   bebidas.add(new Producto(2,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Siete,12));
+   bebidas.add(new Producto(1,"Ceveza hacendaño","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Alcoholicas,1.99,E_Iva.Doce,12));
+   
    }
    
    

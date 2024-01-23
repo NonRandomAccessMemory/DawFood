@@ -9,7 +9,7 @@ package DawFoodSV.ClasesFuncionamiento;
  * @author snavgar
  */
 public enum E_SubCategoria {
-    Azucaradas("Postre"),SinAzucar("Postre"),Energeticas("Bebida"),Hamburguesa("Postre"),Ensalada("Postre"),Kebab("Comida"),Helados("Postre"),PostresCaseros("Postre"),Tartas("Postre");
+    Azucaradas("Postre"),SinAzucar("Postre"),Alcoholicas("Alcoholicas"),Hamburguesa("Postre"),Ensalada("Postre"),Kebab("Comida"),Helados("Postre"),PostresCaseros("Postre"),Tartas("Postre");
     
     private final String categoria;
     private E_SubCategoria(String categoria){
