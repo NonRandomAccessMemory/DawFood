@@ -61,7 +61,7 @@ public class Menu {
                 }
                 //Opcion apertura menú para user
                 case 1 -> {
-                    //modoUser();
+                    modoUser();
                     break;
                 }
 
@@ -81,7 +81,7 @@ public class Menu {
     }
 
     private void modoAdmin() {
-        /*
+        
         JOptionPane.showMessageDialog(null, "Modo mantenimiento", "DawFood", 0);
 
         Admin admin = new Admin();
@@ -97,7 +97,7 @@ public class Menu {
             }
 
         } while (continuar3);
-         */
+         
 
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
@@ -148,6 +148,6 @@ public class Menu {
 
 
 
-   // private void modoUser() {
-   // }
+   private void modoUser() {
+   }
 }
