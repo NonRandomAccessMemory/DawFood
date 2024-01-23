@@ -50,6 +50,33 @@ public class CartaComida {
         }
       }
 }
+   public boolean BorrarProducto(Producto producto,E_Usuario usuario){
+   if(usuario.get_usuario().contentEquals("Administrador")){
+        switch(producto.get_categoria()){
+            case "Bebida":
+                for(Producto p : bebidas){
+                    if(producto.get_id().intValue() == p.get_id()){
+                    bebidas.remove(p);
+                    break;
+                    }
+                }
+            break;
+            case "Comida":
+                for(Producto p : comidas){
+                    if(producto.get_id().intValue() == p.get_id()){
+                    comidas.remove(p);
+                    }
+                }
+            break;
+            case "Postre":
+                for(Producto p : postres){
+                    if(producto.get_id().intValue() == p.get_id()){
+                    postres.remove(p);
+                    }
+                }
+            break;
+        }
+   }
    
    public void Ordenar(){
     Comparator<Producto> comparador=(e1,e2)-> e1.get_id().compareTo(e2.get_id());
@@ -61,16 +88,22 @@ public class CartaComida {
    public ArrayList<Producto> get_Comidas(){
        return (ArrayList<Producto>)this.comidas.clone();
     }
-    public ArrayList<Producto> get_Bebidas(){
+   public ArrayList<Producto> get_Bebidas(){
        return (ArrayList<Producto>)this.bebidas.clone();
     }
-    public ArrayList<Producto> get_Postres(){
+   public ArrayList<Producto> get_Postres(){
         return (ArrayList<Producto>)this.postres.clone();
     }
-    
-    
-    
-   public void FinalizarCompra(){
-       
+   
+   public boolean ModificarProducto(Producto p){
+        //Dado un objeto pre seleccionado p
+        //Modificar el objeto seleccionado previamente sin cambiar id
+        //realizar el cambio
+        //si el cambio ha sido erroneo devolver false
+        return true;
+        }
+   
+   
    }
-}
+    
+   
