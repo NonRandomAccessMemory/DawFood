@@ -4,6 +4,8 @@
  */
 package DawFoodSV;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -114,7 +116,6 @@ public class Menu {
         } while (continuar3);
     }
 
-
     private void opcionElegida() {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
@@ -205,17 +206,17 @@ public class Menu {
             switch (variable) {
                 //Opcion apertura de menú COMIDAS
                 case 0 -> {
-                    
+
                     break;
                 }
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
-                    
+
                     break;
                 }
                 //Opcion apertura menú POSTRES
                 case 2 -> {
-                    
+
                     break;
                 }
 
