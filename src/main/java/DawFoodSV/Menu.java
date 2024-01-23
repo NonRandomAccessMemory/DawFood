@@ -5,6 +5,7 @@
 package DawFoodSV;
 
 import javax.swing.JOptionPane;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
@@ -81,48 +82,61 @@ public class Menu {
     }
 
     private void modoAdmin() {
-        
-        JOptionPane.showMessageDialog(null, "Modo mantenimiento", "DawFood", 0);
-
+        //Llamar a admin para usar contraseña generada
         Admin admin = new Admin();
-        String contraseñaIntroducida = JOptionPane.showInputDialog("Introduzca constraseña del TPV: ");
-
+        String passwordIntroducida = JOptionPane.showInputDialog(null,
+                "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", 0);
         boolean continuar3 = true;
+        // contador de intentos
+        int intentos = 0;
+        // número máximo de intentos
+        int maximo = 3;
+        //Bucle para controlar que se introduce contraseña del TPV y un maximo de 3 veces para evitar accesos no deseados 
         do {
-            if (contraseñaIntroducida == admin.generarPasswordAdmin()) {
-                JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
-                break;
+            if (passwordIntroducida.equals(Admin.generarPasswordAdmin())) {
+                intentos++;
+                if (intentos == maximo) {
+                    JOptionPane.showMessageDialog(null, "Acceso denegado.Solo personal autorizado",
+                            "DawFood - Modo mantenimiento", 0);
+                    // salir del bucle
+                    iniciarTPV();
+                } else {
+                    // repetir bucle                
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta, repitala.",
+                            "DawFood - Modo mantenimiento", 0);
+                    passwordIntroducida = JOptionPane.showInputDialog(null,
+                            "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", 1);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                //Sale del bucle y continua;
+                JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
+                continuar3 = false;
             }
-
         } while (continuar3);
-         
 
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
             "4-. Consultar las ventas realizadas.", "5-. Atrás"};
-        JOptionPane.showMessageDialog(null, "Elige una opción: ", "DawFood - Modo Mantenimiento", 0);
+
+        JOptionPane.showMessageDialog(
+                null, "Elige una opción: ", "DawFood - Modo Mantenimiento", 0);
         String opcionElegida;
         boolean continuar = true;
 
         do {
             opcionElegida = (String) JOptionPane.showInputDialog(null,
-                "Elige una opción", "DawFood - Modo Mantenimiento",
-                JOptionPane.QUESTION_MESSAGE, null,
-                opcionesMenu1, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
-          
+                    "Elige una opción", "DawFood - Modo Mantenimiento",
+                    JOptionPane.QUESTION_MESSAGE, null,
+                    opcionesMenu1, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
+
             switch (opcionElegida) {
                 case "1-. Cambiar cualquier dato de los productos, excepto su ID." -> {
-
                     break;
                 }
-
                 case "2-. Dar de alta nuevos productos." -> {
                     break;
                 }
                 case "3-. Borrar productos existentes." -> {
-
                     break;
                 }
                 case "4-. Consultar las ventas realizadas." -> {
@@ -132,22 +146,38 @@ public class Menu {
                     menu2();
                     break;
                 }
-                 default -> {
+                default -> {
                     iniciarTPV();
                     System.exit(0);
                 }
             }
-
         } while (continuar);
-
-        
-
     }
 
+    private void modoUser() {
+    }
 
+    public static String generarPasswordAdmin() {
 
+        StringBuilder password = new StringBuilder();
 
+        //Generea una letra minuscula (a - z)
+        password.append(RandomStringUtils.randomAlphabetic(1).toLowerCase());
 
-   private void modoUser() {
-   }
+        //Generea una letra mayuscula (A - Z)
+        password.append(RandomStringUtils.randomAlphabetic(1).toUpperCase());
+
+        //Generea un numero(0 - 9)
+        password.append(RandomStringUtils.randomNumeric(1));
+
+        //Genera tres caracteres especiales entre # $ % &  ( ) * + , - .  : ; < = > @
+        password.append(RandomStringUtils.randomAscii(35, 38));
+        password.append(RandomStringUtils.randomAscii(40, 46));
+        password.append(RandomStringUtils.randomAscii(58, 64));
+
+        if (password.length() > 6) {
+            password.setLength(6);
+        }
+        return password.toString();
+    }
 }
