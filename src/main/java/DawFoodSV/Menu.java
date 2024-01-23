@@ -61,7 +61,7 @@ public class Menu {
                 }
                 //Opcion apertura menú para user
                 case 1 -> {
-                    modoUser();
+                    //modoUser();
                     break;
                 }
 
@@ -81,19 +81,73 @@ public class Menu {
     }
 
     private void modoAdmin() {
-        Admin admin = new Admin();
+        /*
         JOptionPane.showMessageDialog(null, "Modo mantenimiento", "DawFood", 0);
 
+        Admin admin = new Admin();
         String contraseñaIntroducida = JOptionPane.showInputDialog("Introduzca constraseña del TPV: ");
-        if (contraseñaIntroducida == admin.generarPasswordAdmin()){
-            JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
-        }else {
-            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
-        }
 
-        JOptionPane.showMessageDialog(null, "");
+        boolean continuar3 = true;
+        do {
+            if (contraseñaIntroducida == admin.generarPasswordAdmin()) {
+                JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+            }
+
+        } while (continuar3);
+         */
+
+        String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
+            "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
+            "4-. Consultar las ventas realizadas.", "5-. Atrás"};
+        JOptionPane.showMessageDialog(null, "Elige una opción: ", "DawFood - Modo Mantenimiento", 0);
+        String opcionElegida;
+        boolean continuar = true;
+
+        do {
+            opcionElegida = (String) JOptionPane.showInputDialog(null,
+                "Elige una opción", "DawFood - Modo Mantenimiento",
+                JOptionPane.QUESTION_MESSAGE, null,
+                opcionesMenu1, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
+          
+            switch (opcionElegida) {
+                case "1-. Cambiar cualquier dato de los productos, excepto su ID." -> {
+
+                    break;
+                }
+
+                case "2-. Dar de alta nuevos productos." -> {
+                    break;
+                }
+                case "3-. Borrar productos existentes." -> {
+
+                    break;
+                }
+                case "4-. Consultar las ventas realizadas." -> {
+                    break;
+                }
+                case "5-. Atrás" -> {
+                    menu2();
+                    break;
+                }
+                 default -> {
+                    iniciarTPV();
+                    System.exit(0);
+                }
+            }
+
+        } while (continuar);
+
+        
+
     }
 
-    private void modoUser() {
-    }
+
+
+
+
+   // private void modoUser() {
+   // }
 }
