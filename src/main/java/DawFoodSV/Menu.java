@@ -47,7 +47,6 @@ public class Menu {
     //Método para elegir menu de administración o usuario
     private void menu2() {
         //Elección tipo usuario
-
         String[] botones1 = {"Modo Administrador", "Modo Usuario", "Atrás"};
         boolean continuar1 = true;
 
@@ -196,6 +195,43 @@ public class Menu {
     }
 
     private void modoUser() {
+        JOptionPane.showMessageDialog(null, "Bienvenidos a DawFood", "DawFood", 0);
+        String[] botones1 = {"Ver COMIDAS", "Ver BEBIDAS", "Ver POSTRES", "<-"};
+        boolean continuar1 = true;
+
+        do {
+            int variable = JOptionPane.showOptionDialog(null, "Seleccione modo de acceso: ",
+                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
+            switch (variable) {
+                //Opcion apertura de menú COMIDAS
+                case 0 -> {
+                    
+                    break;
+                }
+                //Opcion apertura menú BEBIDAS
+                case 1 -> {
+                    
+                    break;
+                }
+                //Opcion apertura menú POSTRES
+                case 2 -> {
+                    
+                    break;
+                }
+
+                //Opcion volver menu encendido
+                case 3 -> {
+                    modoUser();
+                    break;
+                }
+
+                default -> {
+                    continuar1 = false;
+                    System.exit(0);
+                }
+            }
+
+        } while (continuar1);
     }
 
     public static String generarPasswordAdmin() {
