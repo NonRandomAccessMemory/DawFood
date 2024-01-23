@@ -81,7 +81,14 @@ public class CartaComida {
    }
    return false;
    }
-   
+   public boolean ModificarProducto(Producto p, E_Usuario usuario){
+        //Dado un objeto pre seleccionado p
+        //Modificar el objeto seleccionado previamente sin cambiar id
+        //realizar el cambio
+        //si el cambio ha sido erroneo devolver false
+        return true;
+        }
+       
    public void Ordenar(){
     Comparator<Producto> comparador=(e1,e2)-> e1.get_id().compareTo(e2.get_id());
     comidas.sort(comparador);
@@ -130,15 +137,6 @@ public class CartaComida {
         }
         return productosPorSubcategoria;
 }    
-       
-       
-   public boolean ModificarProducto(Producto p){
-        //Dado un objeto pre seleccionado p
-        //Modificar el objeto seleccionado previamente sin cambiar id
-        //realizar el cambio
-        //si el cambio ha sido erroneo devolver false
-        return true;
-        }
        
    }
 
