@@ -26,7 +26,7 @@ public class Menu {
         boolean continuar = true;
         do {
             int variable = JOptionPane.showOptionDialog(null, "¿Quieres encender el TPV?",
-                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, botones[0]);
+                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, botones, botones[0]);
             switch (variable) {
                 case 0 -> {
 
@@ -85,7 +85,7 @@ public class Menu {
         //Llamar a admin para usar contraseña generada
         Admin admin = new Admin();
         String passwordIntroducida = JOptionPane.showInputDialog(null,
-                "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", 0);
+                "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", JOptionPane.WARNING_MESSAGE);
         boolean continuar3 = true;
         // contador de intentos
         int intentos = 0;
@@ -97,19 +97,19 @@ public class Menu {
                 intentos++;
                 if (intentos == maximo) {
                     JOptionPane.showMessageDialog(null, "Acceso denegado.Solo personal autorizado",
-                            "DawFood - Modo mantenimiento", 0);
+                            "DawFood - Modo mantenimiento", JOptionPane.ERROR_MESSAGE);
                     // salir del bucle
                     iniciarTPV();
                 } else {
                     // repetir bucle                
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta, repitala.",
-                            "DawFood - Modo mantenimiento", 0);
+                            "DawFood - Modo mantenimiento", JOptionPane.WARNING_MESSAGE);
                     passwordIntroducida = JOptionPane.showInputDialog(null,
                             "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", JOptionPane.QUESTION_MESSAGE);
                 }
             } else {
                 //Sale del bucle y continua;
-                JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
+                JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", JOptionPane.INFORMATION_MESSAGE);
                 opcionElegidAdmin();
             }
         } while (continuar3);
@@ -120,12 +120,10 @@ public class Menu {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
             "4-. Consultar las ventas realizadas.", "5-. Atrás"};
-
-        String opcionElegida;
         boolean continuar = true;
-
+        //Bucle que muestra las opciones de adminitracion
         do {
-            opcionElegida = (String) JOptionPane.showInputDialog(null,
+           String opcionElegida = (String) JOptionPane.showInputDialog(null,
                     "Elige una opción", "DawFood - Modo Mantenimiento",
                     JOptionPane.QUESTION_MESSAGE, null,
                     opcionesMenu1, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
@@ -152,8 +150,8 @@ public class Menu {
                     break;
                 }
                 default -> {
-                    iniciarTPV();
-                    System.exit(0);
+                    continuar = false;
+                    System.exit(1);
                 }
             }
         } while (continuar);
@@ -161,7 +159,7 @@ public class Menu {
 
     private void consultarVentasAdmin() {
         String[] opcionesMenuVentas = {"1-. En un día concreto.",
-            "2-. Hasta una fecha concreta.", "3-. Todas las ventas que haya registradas.", "4.- Atrás"};
+            "2-. Hasta una fecha concreta.", "3-. Todas las ventas que haya registradas.", "4-. Atrás"};
         JOptionPane.showMessageDialog(
                 null, "Consultar las ventas realizadas: ", "DawFood - Modo Mantenimiento", 0);
         String opcionesElegidaVentas;
@@ -169,9 +167,9 @@ public class Menu {
 
         do {
             opcionesElegidaVentas = (String) JOptionPane.showInputDialog(null,
-                    "Elige una opción", "DawFood - Modo Mantenimiento",
+                    "Consultar las ventas realizadas: ", "DawFood - Modo Mantenimiento",
                     JOptionPane.QUESTION_MESSAGE, null,
-                    opcionesMenuVentas, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
+                    opcionesMenuVentas, "");
 
             switch (opcionesElegidaVentas) {
                 case "1-. En un día concreto." -> {
