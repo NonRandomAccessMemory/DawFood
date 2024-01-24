@@ -52,7 +52,7 @@ public class Carrito {
           
     }
     
-    public void ProcesarCompra(){
+    public String ProcesarCompra(String numeroTarjeta){
         /*Si la lista no está vacía*/
                 /*Recorrer la lista y calcular el precio total*/
                 /*Añadir la lista a las compras totales*/
@@ -64,12 +64,27 @@ public class Carrito {
             for(ProductoVenta pv : m_carrito){
                 totalAcobrar+= (pv.get_precio()*(pv.Iva.get_iva()));
             }
-            /*Añadir con optionpane el numero de tarjeta a validar*/
-            String numeroTarjeta=new String();
-            boolean estado=pasarelaPago.ProcesoDePago(totalAcobrar,numeroTarjeta);
+            /*Tarjeta a validar*/
+            String Tarjeta;
+            if(numeroTarjeta.isBlank()|| numeroTarjeta.isEmpty()){
+                return "Inserte una tarjeta valida";
+            }
+            Tarjeta=numeroTarjeta;
+            boolean estado=pasarelaPago.ProcesoDePago(totalAcobrar,Tarjeta);
             
             if(estado){
-                ProcesarTicket();
+               String ticketResultado=ProcesarTicket();
+               return ticketResultado;
+            }
+            else{
+                /*INFORMO DEL ERROR DURANTE LA PASARELA DE PAGO*/
+                  String resultadoError= "Se ha producido un Error al realizar el cargo";
+                  return resultadoError;
+                /*VOLVER AL MENU PRINCIPAL*/}
+    }
+    
+    /*Devuelve el texto con el ticket que debe ser mostrado en el JoptionPane*/
+    private String ProcesarTicket(){
                 Tpv.VENTASTOTALES+=1;
                 Ticket ticket = new Ticket(Tpv.VENTASTOTALES,m_carrito.size());
                 for(ProductoVenta p : m_carrito)
@@ -77,14 +92,11 @@ public class Carrito {
                     ticket.AñadirElemento(p);
                 }
                 ticket.AñadirFecha(LocalDate.now());
+                //Añadir metodo devolver string de ticket
+                String textoTicket= ticket.toString();
+                Tpv.AñadirTicket(ticket);
+                return textoTicket;
                 
-                /*Crear el objeto TIcket y añadirlo a la lista*/
-             /*imprimir el ticket final*/
-            }
-            else{
-                /*INFORMAR DEL ERROR PRODUCIDO y de que no se ha cobrado*/
-                /*VOLVER AL MENU PRINCIPAL*/}
     }
     
-    private void ProcesarTicket(){}
 }
