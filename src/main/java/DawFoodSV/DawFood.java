@@ -20,10 +20,6 @@ public class DawFood {
         Menu menu = new Menu();
         menu.iniciarTPV();
         
-        
-        
-        
-       
     }
    
     }

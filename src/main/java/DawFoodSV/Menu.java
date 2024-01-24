@@ -5,6 +5,7 @@
 package DawFoodSV;
 
 import java.net.URL;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,28 +16,27 @@ import org.apache.commons.lang3.RandomStringUtils;
  */
 public class Menu {
 
+    //icono("/Vistas/favicon.png")
     //Menú de encendidio 
     public void iniciarTPV() {
         //Menú encender maquina
         JOptionPane.showConfirmDialog(null, "Bienvenidos a DawFood", "DawFood", JOptionPane.DEFAULT_OPTION);
-
+        //Bucle que muestra opción de encendido
         String[] botones = {"Encender", "StandBy"};
         boolean continuar = true;
         do {
             int variable = JOptionPane.showOptionDialog(null, "¿Quieres encender el TPV?",
-                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones, botones[0]);
+                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, botones[0]);
             switch (variable) {
                 case 0 -> {
 
-                    menu2();
+                    tipoUsuario();
                     break;
                 }
-
                 case 1 -> {
                     iniciarTPV();
                     break;
                 }
-
                 default -> {
                     continuar = false;
                     System.exit(0);
@@ -47,14 +47,13 @@ public class Menu {
     }
 
     //Método para elegir menu de administración o usuario
-    private void menu2() {
+    private void tipoUsuario() {
         //Elección tipo usuario
         String[] botones1 = {"Modo Administrador", "Modo Usuario", "Atrás"};
         boolean continuar1 = true;
-
         do {
             int variable1 = JOptionPane.showOptionDialog(null, "Seleccione modo de acceso: ",
-                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones1, botones1[0]);
+                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, botones1, botones1[0]);
             switch (variable1) {
                 //Opcion apertura de menú para admin
                 case 0 -> {
@@ -63,7 +62,7 @@ public class Menu {
                 }
                 //Opcion apertura menú para user
                 case 1 -> {
-                    modoUser();
+                    modoUserIni();
                     break;
                 }
 
@@ -106,23 +105,22 @@ public class Menu {
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta, repitala.",
                             "DawFood - Modo mantenimiento", 0);
                     passwordIntroducida = JOptionPane.showInputDialog(null,
-                            "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", 1);
+                            "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", JOptionPane.QUESTION_MESSAGE);
                 }
             } else {
                 //Sale del bucle y continua;
                 JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", 0);
-                opcionElegida();
+                opcionElegidAdmin();
             }
         } while (continuar3);
-    }
 
-    private void opcionElegida() {
+    }
+    //Metodo de opciones del administrados
+    private void opcionElegidAdmin() {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
             "4-. Consultar las ventas realizadas.", "5-. Atrás"};
 
-        JOptionPane.showMessageDialog(
-                null, "Elige una opción: ", "DawFood - Modo Mantenimiento", 0);
         String opcionElegida;
         boolean continuar = true;
 
@@ -134,20 +132,23 @@ public class Menu {
 
             switch (opcionElegida) {
                 case "1-. Cambiar cualquier dato de los productos, excepto su ID." -> {
+                    System.out.println("1");
                     break;
                 }
                 case "2-. Dar de alta nuevos productos." -> {
+                    System.out.println("2");
                     break;
                 }
                 case "3-. Borrar productos existentes." -> {
+                    System.out.println("3");
                     break;
                 }
                 case "4-. Consultar las ventas realizadas." -> {
-                    consultarVentas();
+                    consultarVentasAdmin();
                     break;
                 }
                 case "5-. Atrás" -> {
-                    menu2();
+                    tipoUsuario();
                     break;
                 }
                 default -> {
@@ -158,7 +159,7 @@ public class Menu {
         } while (continuar);
     }
 
-    private void consultarVentas() {
+    private void consultarVentasAdmin() {
         String[] opcionesMenuVentas = {"1-. En un día concreto.",
             "2-. Hasta una fecha concreta.", "3-. Todas las ventas que haya registradas.", "4.- Atrás"};
         JOptionPane.showMessageDialog(
@@ -174,16 +175,20 @@ public class Menu {
 
             switch (opcionesElegidaVentas) {
                 case "1-. En un día concreto." -> {
+                    System.out.println("1");
                     break;
+
                 }
                 case "2-. Hasta una fecha concreta." -> {
+                    System.out.println("2");
                     break;
                 }
                 case "3-. Todas las ventas que haya registradas." -> {
+                    System.out.println("3");
                     break;
                 }
                 case "4-. Atrás" -> {
-                    opcionElegida();
+                    opcionElegidAdmin();
                     break;
                 }
                 default -> {
@@ -195,34 +200,59 @@ public class Menu {
 
     }
 
-    private void modoUser() {
-        JOptionPane.showMessageDialog(null, "Bienvenidos a DawFood", "DawFood", 0);
+    private void modoUserIni() {
+        boolean continuar = true;
+        String[] botones = {"Comienza tu pedido", "<-"};
+        do {
+            int variable = JOptionPane.showOptionDialog(null, "Bienvenidos a DawFood ",
+                    "DawFood", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+            switch (variable) {
+                //Opcion apertura de menú pedido
+                case 0 -> {
+                    modoUserCarta();
+                    break;
+                }
+                //Opcion apertura menú usuarios
+                case 1 -> {
+                    tipoUsuario();
+                    break;
+                }
+                default -> {
+                    iniciarTPV();
+                    System.exit(0);
+                }
+            }
+        } while (continuar);
+    }
+
+    private void modoUserCarta() {
+        //Eleccion menu 
         String[] botones1 = {"Ver COMIDAS", "Ver BEBIDAS", "Ver POSTRES", "<-"};
         boolean continuar1 = true;
 
         do {
-            int variable = JOptionPane.showOptionDialog(null, "Seleccione modo de acceso: ",
-                    "DawFood", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
-            switch (variable) {
+            int variable1 = JOptionPane.showOptionDialog(null, " CARTA: ",
+                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
+            switch (variable1) {
                 //Opcion apertura de menú COMIDAS
                 case 0 -> {
-
+                    System.out.println("comida");
                     break;
                 }
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
-
+                    System.out.println("bebida");
                     break;
                 }
                 //Opcion apertura menú POSTRES
                 case 2 -> {
-
+                    System.out.println("Postre");
                     break;
                 }
 
                 //Opcion volver menu encendido
                 case 3 -> {
-                    modoUser();
+                    modoUserIni();
                     break;
                 }
 
