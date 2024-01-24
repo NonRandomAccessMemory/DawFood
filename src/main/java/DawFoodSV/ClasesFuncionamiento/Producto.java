@@ -52,7 +52,8 @@ public class Producto {
     public Double get_precio(){
         return this.precio;
     }
-
+    public int get_stock(){
+        return this.stock;}
     @Override
     public int hashCode() {
         int hash = 3;

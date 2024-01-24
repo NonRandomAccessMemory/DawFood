@@ -29,4 +29,6 @@ public class Ticket {
         }
         return true;
     }
+    public void AñadirFecha(LocalDate horaLocal){
+        this.fecha=horaLocal;}
 }
