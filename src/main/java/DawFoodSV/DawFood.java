@@ -3,6 +3,7 @@
  */
 package DawFoodSV;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,14 +13,16 @@ import javax.swing.JOptionPane;
 public class DawFood {
 
     public static void main(String[] args) {
-        
+
         //Instanciar la clase admin para ver la contraseña por consola
-        Admin admin = new Admin();
-        System.out.println(admin.generarPasswordAdmin());
-        //Instanciar la clase que abre los menús
         Menu menu = new Menu();
+        String password = menu.generarPasswordAdmin();
+        menu.generarPasswordAdmin();
+        // Imprimir cada elemento del array
+        System.out.println("Contraseña generada: " + password);
+        //Instanciar la clase que abre los menús
         menu.iniciarTPV();
-        
+
     }
-   
-    }
+
+}

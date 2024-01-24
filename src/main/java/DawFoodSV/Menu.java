@@ -9,6 +9,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
+import java.util.Arrays;
 
 /**
  *
@@ -82,8 +83,8 @@ public class Menu {
     }
 
     private void modoAdmin() {
+        String password = generarPasswordAdmin();
         //Llamar a admin para usar contraseña generada
-        Admin admin = new Admin();
         String passwordIntroducida = JOptionPane.showInputDialog(null,
                 "Introduzca constraseña del TPV: ", "DawFood - Modo mantenimiento", JOptionPane.WARNING_MESSAGE);
         boolean continuar3 = true;
@@ -93,7 +94,7 @@ public class Menu {
         int maximo = 3;
         //Bucle para controlar que se introduce contraseña del TPV y un maximo de 3 veces para evitar accesos no deseados 
         do {
-            if (passwordIntroducida.equals(Admin.generarPasswordAdmin())) {
+            if (passwordIntroducida.equals(password)) {
                 intentos++;
                 if (intentos == maximo) {
                     JOptionPane.showMessageDialog(null, "Acceso denegado.Solo personal autorizado",
@@ -115,6 +116,7 @@ public class Menu {
         } while (continuar3);
 
     }
+
     //Metodo de opciones del administrados
     private void opcionElegidAdmin() {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
@@ -123,7 +125,7 @@ public class Menu {
         boolean continuar = true;
         //Bucle que muestra las opciones de adminitracion
         do {
-           String opcionElegida = (String) JOptionPane.showInputDialog(null,
+            String opcionElegida = (String) JOptionPane.showInputDialog(null,
                     "Elige una opción", "DawFood - Modo Mantenimiento",
                     JOptionPane.QUESTION_MESSAGE, null,
                     opcionesMenu1, "1-. Cambiar cualquier dato de los productos, excepto su ID.");
@@ -203,7 +205,8 @@ public class Menu {
         String[] botones = {"Comienza tu pedido", "<-"};
         do {
             int variable = JOptionPane.showOptionDialog(null, "Bienvenidos a DawFood ",
-                    "DawFood", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+                    "DawFood", JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
             switch (variable) {
                 //Opcion apertura de menú pedido
                 case 0 -> {
@@ -230,7 +233,8 @@ public class Menu {
 
         do {
             int variable1 = JOptionPane.showOptionDialog(null, " CARTA: ",
-                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
+                    "DawFood", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
             switch (variable1) {
                 //Opcion apertura de menú COMIDAS
                 case 0 -> {
@@ -263,27 +267,74 @@ public class Menu {
         } while (continuar1);
     }
 
-    public static String generarPasswordAdmin() {
+    private void cartaComida() {
+        //Eleccion menu 
+        String[] botones1 = {"Ver COMIDAS", "Ver BEBIDAS", "Ver POSTRES", "<-"};
+        boolean continuar1 = true;
 
-        StringBuilder password = new StringBuilder();
+        do {
+            int variable1 = JOptionPane.showOptionDialog(null, " CARTA: ",
+                    "DawFood", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
+            switch (variable1) {
+                //Opcion apertura de menú COMIDAS
+                case 0 -> {
+                    System.out.println("comida");
+                    break;
+                }
+                //Opcion apertura menú BEBIDAS
+                case 1 -> {
+                    System.out.println("bebida");
+                    break;
+                }
+                //Opcion apertura menú POSTRES
+                case 2 -> {
+                    System.out.println("Postre");
+                    break;
+                }
+
+                //Opcion volver menu encendido
+                case 3 -> {
+                    modoUserIni();
+                    break;
+                }
+
+                default -> {
+                    continuar1 = false;
+                    System.exit(0);
+                }
+            }
+
+        } while (continuar1);
+    }
+
+    public String generarPasswordAdmin() {
+        //Array de contraseña
+        String especiales = "# $ % &  ( ) * + , - .  : ; < = > @";
+
+        char[] passwordArray = new char[6];
 
         //Generea una letra minuscula (a - z)
-        password.append(RandomStringUtils.randomAlphabetic(1).toLowerCase());
+        passwordArray[0] = RandomStringUtils.randomAlphabetic(1, 1).toLowerCase().charAt(0);
 
         //Generea una letra mayuscula (A - Z)
-        password.append(RandomStringUtils.randomAlphabetic(1).toUpperCase());
+        passwordArray[1] = RandomStringUtils.randomAlphabetic(1, 1).toUpperCase().charAt(0);
 
         //Generea un numero(0 - 9)
-        password.append(RandomStringUtils.randomNumeric(1));
+        passwordArray[2] = RandomStringUtils.randomNumeric(1).charAt(0);
 
         //Genera tres caracteres especiales entre # $ % &  ( ) * + , - .  : ; < = > @
-        password.append(RandomStringUtils.randomAscii(35, 38));
-        password.append(RandomStringUtils.randomAscii(40, 46));
-        password.append(RandomStringUtils.randomAscii(58, 64));
+        passwordArray[3] = especiales;
 
-        if (password.length() > 6) {
-            password.setLength(6);
+        // Rellenar las posiciones restantes de manera random
+        for (int i = 4; i < 6; i++) {
+            passwordArray[i] = RandomStringUtils.randomAscii(33, 126).charAt(0);
         }
-        return password.toString();
+
+        return String.valueOf(passwordArray);
     }
+
+    /*public String[] obtenerResultadoPrivado() {
+        return generarPasswordAdmin();
+    }*/
 }
