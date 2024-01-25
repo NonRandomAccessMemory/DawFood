@@ -79,5 +79,10 @@ public class Producto {
         }
         return Objects.equals(this.id, other.id);
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", descripcion=" + descripcion + ", nombre=" + nombre + ", Iva=" + Iva + ", precio=" + precio + ", stock=" + stock + '}';
+    }
     
 }
