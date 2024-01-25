@@ -12,11 +12,16 @@ import java.util.Comparator;
  * @author snavgar
  */
 public class CartaComida {
-    private final ArrayList<Producto> comidas= new ArrayList<>();
-    private final ArrayList<Producto> postres= new ArrayList<>();
-    private final ArrayList<Producto> bebidas= new ArrayList<>();
+    private final ArrayList<Producto> comidas;
+    private final ArrayList<Producto> postres;
+    private final ArrayList<Producto> bebidas;
      
    public CartaComida(){
+       /*Instancio objeto New ArrayList*/
+   this.comidas= new ArrayList<>();
+   this.postres= new ArrayList<>();
+   this.bebidas= new ArrayList<>();
+       /*Añado objetos*/
    comidas.add(new Producto(1,"Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
    comidas.add(new Producto(3,"Hamburgusa Mcfit","Hamburguesa de ternera que sigue engondando",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
    comidas.add(new Producto(2,"Hamburgusa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
@@ -30,7 +35,6 @@ public class CartaComida {
    bebidas.add(new Producto(1,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,9.99,E_Iva.Siete,12));
    bebidas.add(new Producto(2,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Siete,12));
    bebidas.add(new Producto(1,"Ceveza hacendaño","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Alcoholicas,1.99,E_Iva.Doce,12));
-   
    }
    
    
