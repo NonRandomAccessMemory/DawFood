@@ -14,16 +14,24 @@ public class ProductoVenta extends Producto {
         super(id, nombre, descripcion, categoria, subCategoria, precio, iva, stock);
         this.unidades= unidades;
     }
-    
+    public int get_unidades(){return this.unidades;}
     public void AddUnidadesPorUno(){
         this.unidades= this.unidades++;}
     public void ReduceUnidadesPorUno(){
-        if(this.unidades>0){this.unidades--;}
-}
-    
+        if(this.unidades>0){this.unidades--;}}
     public void AddUnidades(int unidades){
      if(unidades > 0 && this.unidades > 0){this.unidades = this.unidades + unidades;}}
     public void ReduceUnidades(int unidades){
      if(unidades > 0 && ((this.unidades - unidades)) >= 0){ this.unidades= this.unidades-unidades;}
-    } 
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.get_nombre()).append(" ").append(this.unidades).append(" ")
+                .append(this.get_precio()).append(" ").append(this.get_precio() * this.Iva.get_iva());
+        
+        return sb.toString();
+    }
+    
 }

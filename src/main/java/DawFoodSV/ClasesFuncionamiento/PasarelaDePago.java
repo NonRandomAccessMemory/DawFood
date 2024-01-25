@@ -11,9 +11,10 @@ import java.util.HashSet;
  * @author samue
  */
 public class PasarelaDePago {
-    HashSet<TarjetaCredito> tarjetas= new HashSet<>();
+    HashSet<TarjetaCredito> tarjetas;
     
     public PasarelaDePago(){
+        this.tarjetas= new HashSet<>();
         tarjetas.add(new TarjetaCredito("Samuel","1234","123","1/25", 699.0f));
         tarjetas.add(new TarjetaCredito("Vicky","2345","123","2/25", 699.0f));
     /*Añadir tarjetas de pago y sus fondos*/}
@@ -29,7 +30,7 @@ public boolean ProcesoDePago(double cantidad,String numeroTarjeta){
              if(p.getNumTarjeta().contentEquals(numeroTarjeta)){
                     tarjeta=p;
                     break;}}
- 
+                    
     if(tarjeta.getCvv().equalsIgnoreCase(usuariocvv)){
              if(tarjeta.getFecha().equalsIgnoreCase(usuariofecha)){
                   tarjeta.restarFondos(cantidad);
