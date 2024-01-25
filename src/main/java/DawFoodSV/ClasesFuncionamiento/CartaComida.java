@@ -125,7 +125,7 @@ public class CartaComida {
                 }
            break;
            case "Comida":
-                for(Producto p : bebidas){
+                for(Producto p : comidas){
                      if(p.subCategoria.equals(subcategoria)){
                         productosPorSubcategoria.add(p);
                     }
@@ -133,7 +133,7 @@ public class CartaComida {
            break;
            
            case "Postre":
-                for(Producto p : bebidas){
+                for(Producto p : postres){
                      if(p.subCategoria.equals(subcategoria)){
                         productosPorSubcategoria.add(p);
                         }
