@@ -30,11 +30,9 @@ public class Carrito {
     public String VerCarrito(){
         StringBuilder sb= new StringBuilder();
         double totalprecio=0.0f;
-           sb.append("---Producto-----------Precio Sin iva------Con iva");
+           sb.append("---Producto-----------Precio Sin iva------Con iva").append("\n");
        for(ProductoVenta p : m_carrito){
-            sb.append(p.get_nombre()).append("-").append(p.get_precio()).append("-")
-                                            .append((p.get_precio()*p.Iva.get_iva()));
-            sb.append("/n");
+            sb.append(p.toString()).append("\n");
             totalprecio+= p.get_precio();
        }
         sb.append("-----------------------------------------------------");

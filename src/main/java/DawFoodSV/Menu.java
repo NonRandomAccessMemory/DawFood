@@ -297,7 +297,9 @@ public class Menu {
                     ArrayList<Producto> hamburguesas=carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     if(!hamburguesas.isEmpty()){
                     Producto p= hamburguesas.get(1);
-                    carrito.AñadirElemento(p, 1);}
+                    System.out.println(p.toString());
+                    carrito.AñadirElemento(p, 1);
+                    System.out.println(carrito.VerCarrito());}
                     
                     break;
                 }
@@ -409,30 +411,7 @@ public class Menu {
         } while (continuar1);
     }
 
-  /* public static String generarPasswordAdmin(){
-       
-       StringBuilder password = new StringBuilder();
-            
-       //Generea una letra minuscula (a - z)
-       password.append(RandomStringUtils.randomAlphabetic(1).toLowerCase());
-       
-       //Generea una letra mayuscula (A - Z)
-       password.append(RandomStringUtils.randomAlphabetic(1).toUpperCase());
-       
-        //Generea un numero(0 - 9)
-       password.append(RandomStringUtils.randomNumeric(1));
-       
-       //Genera tres caracteres especiales entre # $ % &  ( ) * + , - .  : ; < = > @
-       password.append(RandomStringUtils.randomAscii(35, 38)); 
-       password.append(RandomStringUtils.randomAscii(40, 46)); 
-       password.append(RandomStringUtils.randomAscii(58, 64)); 
-       
-      if (password.length() > 6) {
-        password.setLength(6);
-    }  
-        return  password.toString();
-    }*/
-   
+ 
    public String generarPasswordAdmin() {
         //Array de contraseña
         String especiales = "#$%&()*+,-.:;<=>@";
