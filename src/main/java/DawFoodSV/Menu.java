@@ -85,7 +85,7 @@ public class Menu {
                 }
 
                 default -> {
-                    continuar1 = false;
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -164,7 +164,7 @@ public class Menu {
                     break;
                 }
                 default -> {
-                    continuar = false;
+                    iniciarTPV();
                     System.exit(1);
                 }
             }
@@ -273,7 +273,7 @@ public class Menu {
                 }
 
                 default -> {
-                    continuar1 = false;
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -294,12 +294,24 @@ public class Menu {
                 
                 case 0 -> {
                     System.out.println("HAMBURGUESA");
-                    ArrayList<Producto> hamburguesas=carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa);
-                    if(!hamburguesas.isEmpty()){
-                    Producto p= hamburguesas.get(1);
-                    System.out.println(p.toString());
-                    carrito.AñadirElemento(p, 1);
-                    System.out.println(carrito.VerCarrito());}
+                    ArrayList<Producto> hamburguesas = carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa);
+                    /*en una variable del tipo string almacenar con un for la lista y su posicion*/
+
+                    StringBuilder sb = new StringBuilder();
+                    int posicion = 0;
+                    for (Producto p : hamburguesas) {
+                        posicion += 1;
+                        sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+                    }
+                    /*primir con el JoptionPane el string*/
+                    String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
+
+                    if (!hamburguesas.isEmpty()) {
+                        Producto p = hamburguesas.get(Integer.parseInt(eleccionHb));
+                        System.out.println(p.toString());
+                        carrito.AñadirElemento(p, 1);
+                        System.out.println(carrito.VerCarrito());
+                    }
                     
                     break;
                 }
@@ -321,7 +333,7 @@ public class Menu {
                 }
 
                 default -> {
-                    continuar1 = false;
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -362,7 +374,7 @@ public class Menu {
                 }
 
                 default -> {
-                    continuar1 = false;
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -403,7 +415,7 @@ public class Menu {
                 }
 
                 default -> {
-                    continuar1 = false;
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
