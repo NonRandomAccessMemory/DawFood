@@ -327,6 +327,7 @@ public class Menu {
                 
                 case 1 -> {
                     System.out.println("PATATAS");
+                    MostrarYSeleccionar( carta, carrito, E_Categoria.Bebida);
                     break;
                 }
                 
