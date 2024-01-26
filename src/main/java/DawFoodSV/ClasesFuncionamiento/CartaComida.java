@@ -21,23 +21,32 @@ public class CartaComida {
    this.comidas= new ArrayList<>();
    this.postres= new ArrayList<>();
    this.bebidas= new ArrayList<>();
-       /*Añado objetos*/
+       //Añado objetos
    comidas.add(new Producto(1,"Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
    comidas.add(new Producto(3,"Hamburgusa Mcfit","Hamburguesa de ternera que sigue engondando",E_Categoria.Comida,E_SubCategoria.Hamburguesa,8.99,E_Iva.Siete,12));
    comidas.add(new Producto(2,"Hamburgusa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,10.99,E_Iva.Siete,12));
-   comidas.add(new Producto(4,"Patatas Gajo","Patatas gajos muy buenas y saludables",E_Categoria.Comida,E_SubCategoria.Patatas,1.99,E_Iva.Siete,30));
-   comidas.add(new Producto(1,"Patatas finas","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
+   comidas.add(new Producto(4,"Patatas Gajo","Patatas gajos muy buenas y saludables",E_Categoria.Comida,E_SubCategoria.Patatas,2.99,E_Iva.Siete,30));
+   comidas.add(new Producto(5,"Patatas finas","Patatas fritas finas",E_Categoria.Comida,E_SubCategoria.Patatas,0.99,E_Iva.Siete,28));
+   comidas.add(new Producto(6,"Patatas clasicas","Patatas fritas gruesas",E_Categoria.Comida,E_SubCategoria.Patatas,1.99,E_Iva.Siete,78));
+   comidas.add(new Producto(7,"Ensalada mixta","Lechuga, tomate y cebolla",E_Categoria.Comida,E_SubCategoria.Ensalada,3.99,E_Iva.Siete,27));
+   comidas.add(new Producto(8,"Ensalada cesar","MixLechuga, pollo y salsa cesar",E_Categoria.Comida,E_SubCategoria.Ensalada,8.99,E_Iva.Siete,12));
+   comidas.add(new Producto(9,"Ensalada DawFood","MixLechugas, langostinos, salsa rosa",E_Categoria.Comida,E_SubCategoria.Ensalada,9.99,E_Iva.Siete,47));
+   
+   postres.add(new Producto(10,"Mochi","heladojapo",E_Categoria.Postre,E_SubCategoria.Helados,4.99,E_Iva.Siete,12));
+   postres.add(new Producto(11,"CafeConHelado","helado Amuricano",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
+   postres.add(new Producto(12,"McDawFlurry","Helado con leche",E_Categoria.Postre,E_SubCategoria.Helados,3.99,E_Iva.Siete,12));
+   postres.add(new Producto(13,"ConoChocolateNata","Helado de cono con chocolate",E_Categoria.Postre,E_SubCategoria.Helados,1.99,E_Iva.Siete,12));
+   postres.add(new Producto(14,"Yogur con toppin","Yogur helado natural",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
+   
+   bebidas.add(new Producto(15,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,25));
+   bebidas.add(new Producto(16,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Doce,25));
+   bebidas.add(new Producto(17,"Ceveza","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Alcoholicas,2.00,E_Iva.Doce,30));
+   bebidas.add(new Producto(18,"Kas","Kas de Naranja",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,21));
+   bebidas.add(new Producto(19,"Pepsi Max","Pepsi zero zero",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Siete,27));
+   bebidas.add(new Producto(1,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,12));
    
    
-   postres.add(new Producto(1,"Mochi","heladojapo",E_Categoria.Postre,E_SubCategoria.Helados,4.99,E_Iva.Siete,12));
-   postres.add(new Producto(1,"CafeConHelado","helado Amuricano",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
-   postres.add(new Producto(2,"FrigoPie","helado con leche",E_Categoria.Postre,E_SubCategoria.Helados,3.99,E_Iva.Siete,12));
-   postres.add(new Producto(3,"ConoChocolateNata","Helado de cono con chocolate",E_Categoria.Postre,E_SubCategoria.Helados,9.99,E_Iva.Siete,12));
-   postres.add(new Producto(1,"CremaHelada","helado natural",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
    
-   bebidas.add(new Producto(1,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,9.99,E_Iva.Siete,12));
-   bebidas.add(new Producto(2,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Siete,12));
-   bebidas.add(new Producto(1,"Ceveza hacendaño","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Alcoholicas,1.99,E_Iva.Doce,12));
    }
    
    

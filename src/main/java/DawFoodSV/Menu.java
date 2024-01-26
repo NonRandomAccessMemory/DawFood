@@ -379,7 +379,7 @@ public class Menu {
     
     private void cartaPostre(CartaComida carta,Carrito carrito) {
         //Eleccion menu 
-        String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "BEBIDAS CALIENTES", "<-"};
+        String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "Con ", "<-"};
         boolean continuar1 = true;
 
         do {
