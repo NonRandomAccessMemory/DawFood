@@ -8,6 +8,7 @@ import DawFoodSV.ClasesFuncionamiento.Carrito;
 import DawFoodSV.ClasesFuncionamiento.CartaComida;
 import DawFoodSV.ClasesFuncionamiento.E_Categoria;
 import DawFoodSV.ClasesFuncionamiento.E_SubCategoria;
+import DawFoodSV.ClasesFuncionamiento.E_Usuario;
 import DawFoodSV.ClasesFuncionamiento.Producto;
 import java.net.URL;
 import java.util.ArrayList;
@@ -149,10 +150,18 @@ public class Menu {
                 }
                 case "2-. Dar de alta nuevos productos." -> {
                     System.out.println("2");
+                    /*
+                    JOptionPane.showInputDialog();
+                    Producto p= new Producto();
+                    carta.InsertarProducto(p, E_Usuario.Administrador);
+                    */
                     break;
                 }
                 case "3-. Borrar productos existentes." -> {
                     System.out.println("3");
+                    
+                    
+                    /*carta.BorrarProducto( E_Usuario.Administrador)*/
                     break;
                 }
                 case "4-. Consultar las ventas realizadas." -> {
@@ -448,5 +457,27 @@ public class Menu {
 
         return String.valueOf(passwordArray);
     }
-                                                                           
+            
+    public void MostrarYSeleccionar(CartaComida carta, Carrito carrito,E_Categoria categoria, E_SubCategoria subcategoria)
+    {
+                    ArrayList<Producto> productos= carta.devolverPorSubcategoria(categoria, subcategoria);
+                    /*en una variable del tipo string almacenar con un for la lista y su posicion*/
+
+                    StringBuilder sb = new StringBuilder();
+                    int posicion = 0;
+                    for (Producto p : productos) {
+                        posicion += 1;
+                        sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+                    }
+                    /*primir con el JoptionPane el string*/
+                    String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
+
+                    if (!productos.isEmpty()) {
+                        Producto p = productos.get((Integer.parseInt(eleccionHb)-1));
+                        System.out.println(p.toString());
+                        carrito.AñadirElemento(p, 1);
+                        System.out.println(carrito.VerCarrito());
+                    }
+                    
+    }
 }
