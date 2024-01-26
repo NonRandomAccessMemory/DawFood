@@ -303,36 +303,19 @@ public class Menu {
                 
                 case 0 -> {
                     System.out.println("HAMBURGUESA");
-                    ArrayList<Producto> hamburguesas = carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa);
-                    /*en una variable del tipo string almacenar con un for la lista y su posicion*/
-
-                    StringBuilder sb = new StringBuilder();
-                    int posicion = 0;
-                    for (Producto p : hamburguesas) {
-                        posicion += 1;
-                        sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
-                    }
-                    /*primir con el JoptionPane el string*/
-                    String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
-
-                    if (!hamburguesas.isEmpty()) {
-                        Producto p = hamburguesas.get(Integer.parseInt(eleccionHb));
-                        System.out.println(p.toString());
-                        carrito.AñadirElemento(p, 1);
-                        System.out.println(carrito.VerCarrito());
-                    }
-                    
+                    MostrarYSeleccionar(carta,carrito,E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
                 
                 case 1 -> {
                     System.out.println("PATATAS");
-                    MostrarYSeleccionar( carta, carrito, E_Categoria.Bebida);
+                    MostrarYSeleccionar( carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
                     break;
                 }
                 
                 case 2 -> {
                     System.out.println("ENSALADAS");
+                    MostrarYSeleccionar(carta, carrito,E_Categoria.Comida, E_SubCategoria.Ensalada);
                     break;
                 }
 
@@ -364,11 +347,13 @@ public class Menu {
                 
                 case 0 -> {
                     System.out.println("AZUCARADAS");
+                    MostrarYSeleccionar(carta,carrito,E_Categoria.Bebida, E_SubCategoria.Azucaradas);
                     break;
                 }
                 
                 case 1 -> {
                     System.out.println("SIN AZUCAR");
+                    MostrarYSeleccionar(carta,carrito,E_Categoria.Bebida, E_SubCategoria.SinAzucar);
                     break;
                 }
                 
@@ -404,17 +389,20 @@ public class Menu {
             switch (variable1) {
                 
                 case 0 -> {
-                    System.out.println("AZUCARADAS");
+                    System.out.println("Casero");
+                    MostrarYSeleccionar(carta,carrito,E_Categoria.Postre,E_SubCategoria.PostresCaseros);
                     break;
                 }
                 
                 case 1 -> {
                     System.out.println("SIN AZUCAR");
+                    MostrarYSeleccionar(carta,carrito,E_Categoria.Bebida, E_SubCategoria.SinAzucar);
                     break;
                 }
                 
                 case 2 -> {
                     System.out.println("BEBIDAS CALIENTES");
+                   
                     break;
                 }
 
