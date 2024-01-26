@@ -29,6 +29,7 @@ public class Producto {
     /*Constructor*/
     public Producto(int id,String nombre,String descripcion, E_Categoria categoria,E_SubCategoria subCategoria,double precio,E_Iva iva,int stock){
         this.id=id;
+        this.nombre=nombre;
         this.descripcion= descripcion;
         this.Categoria= categoria;
         this.subCategoria= subCategoria;
