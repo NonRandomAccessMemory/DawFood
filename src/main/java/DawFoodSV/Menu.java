@@ -10,6 +10,7 @@ import DawFoodSV.ClasesFuncionamiento.E_Categoria;
 import DawFoodSV.ClasesFuncionamiento.E_SubCategoria;
 import DawFoodSV.ClasesFuncionamiento.E_Usuario;
 import DawFoodSV.ClasesFuncionamiento.Producto;
+import DawFoodSV.ClasesFuncionamiento.Tpv;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -130,7 +131,7 @@ public class Menu {
     }
 
     //Metodo de opciones del administrados
-    private void opcionElegidAdmin(CartaComida carta, Carrito carrito) {
+    private void opcionElegidAdmin(CartaComida carta, Carrito carrito,Tpv ventas) {
         String[] opcionesMenu1 = {"1-. Cambiar cualquier dato de los productos, excepto su ID.",
             "2-. Dar de alta nuevos productos.", "3-. Borrar productos existentes.",
             "4-. Consultar las ventas realizadas.", "5-. Atrás"};
@@ -145,7 +146,10 @@ public class Menu {
             switch (opcionElegida) {
                 case "1-. Cambiar cualquier dato de los productos, excepto su ID." -> {
                     System.out.println("1");
-                    
+                    /*Selecionar tipo de producto
+                      mostrar lista con Productos
+                      Seleccionar Producto
+                      insertar producto cambiado*/
                     break;
                 }
                 case "2-. Dar de alta nuevos productos." -> {
@@ -159,13 +163,18 @@ public class Menu {
                 }
                 case "3-. Borrar productos existentes." -> {
                     System.out.println("3");
-                    
-                    
-                    /*carta.BorrarProducto( E_Usuario.Administrador)*/
+                    String productosDisponibles=Mostrar(carta,carrito,E_Categoria.Comida);
+                    /*Sacar Metodo*/
+                    String eleccionHb = JOptionPane.showInputDialog(null, productosDisponibles, "DawFood", 0);
+                    boolean estahecho=carta.BorrarProducto(new Producto(Integer.parseInt(eleccionHb)), E_Usuario.Administrador);
+                    if(estahecho){
+                        JOptionPane.showMessageDialog(null,"Elemento Borrado!");
+                    }
+                    else{}
                     break;
                 }
                 case "4-. Consultar las ventas realizadas." -> {
-                    consultarVentasAdmin(carta, carrito);
+                    consultarVentasAdmin(carta, carrito,ventas);
                     break;
                 }
                 case "5-. Atrás" -> {
@@ -180,7 +189,7 @@ public class Menu {
         } while (continuar);
     }
 
-    private void consultarVentasAdmin(CartaComida carta, Carrito carrito) {
+    private void consultarVentasAdmin(CartaComida carta, Carrito carrito, Tpv ventas) {
         String[] opcionesMenuVentas = {"1-. En un día concreto.",
             "2-. Hasta una fecha concreta.", "3-. Todas las ventas que haya registradas.", "4-. Atrás"};
         JOptionPane.showMessageDialog(
@@ -272,6 +281,7 @@ public class Menu {
                 //Opcion apertura menú POSTRES
                 case 2 -> {
                     System.out.println("Postre");
+                    cartaPostre(carta,carrito);
                     break;
                 }
 
@@ -446,27 +456,53 @@ public class Menu {
 
         return String.valueOf(passwordArray);
     }
-            
-    public void MostrarYSeleccionar(CartaComida carta, Carrito carrito,E_Categoria categoria, E_SubCategoria subcategoria)
+    
+   
+   public String Mostrar(CartaComida carta, Carrito carrito,E_Categoria categoria)
     {
-                    ArrayList<Producto> productos= carta.devolverPorSubcategoria(categoria, subcategoria);
-                    /*en una variable del tipo string almacenar con un for la lista y su posicion*/
-
-                    StringBuilder sb = new StringBuilder();
-                    int posicion = 0;
-                    for (Producto p : productos) {
-                        posicion += 1;
-                        sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
-                    }
-                    /*primir con el JoptionPane el string*/
-                    String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
-
-                    if (!productos.isEmpty()) {
-                        Producto p = productos.get((Integer.parseInt(eleccionHb)-1));
-                        System.out.println(p.toString());
-                        carrito.AñadirElemento(p, 1);
-                        System.out.println(carrito.VerCarrito());
-                    }
+                    ArrayList<Producto> productos;
+                    /*Switch para seleccionar la lista deseada*/
+                    switch(categoria.get_TipoProducto()){
                     
-    }
+                        case "Comida":
+                            productos=carta.get_Comidas();
+                            break;
+                        case "Bebida":
+                            productos=carta.get_Bebidas();
+                            break;
+                        case "Postre":
+                            productos= carta.get_Postres();
+                            break;
+                    }
+  
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("ID ").append("Nombre").append(" ").append("Precio").append("\n");
+                    for (Producto p : productos) {
+                        sb.append(p.get_id().intValue()).append("  ").append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+                    }
+                   
+                    return sb.toString();
+                    }
+    public void MostrarYSeleccionar(CartaComida carta, Carrito carrito,E_Categoria categoria, E_SubCategoria subcategoria){
+        ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
+        /*en una variable del tipo string almacenar con un for la lista y su posicion*/
+
+        StringBuilder sb = new StringBuilder();
+        int posicion = 0;
+        for (Producto p : productos) {
+            posicion += 1;
+            sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+        }
+        /*primir con el JoptionPane el string*/
+        String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
+
+        if (!productos.isEmpty()) {
+            Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
+            System.out.println(p.toString());
+            carrito.AñadirElemento(p, 1);
+            System.out.println(carrito.VerCarrito());
+        }
+
+    }         
 }
+   

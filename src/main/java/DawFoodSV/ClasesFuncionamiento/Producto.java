@@ -27,6 +27,9 @@ public class Producto {
     private int stock;
     
     /*Constructor*/
+    public Producto(int id){
+        this.id=id;}
+    
     public Producto(int id,String nombre,String descripcion, E_Categoria categoria,E_SubCategoria subCategoria,double precio,E_Iva iva,int stock){
         this.id=id;
         this.nombre=nombre;
@@ -47,7 +50,10 @@ public class Producto {
     public String get_SubCategoria(){
             return this.subCategoria.get_SubTipoProducto();
             }
-    public void set_descripcion(){}
+    public void set_descripcion(String descripcion){
+           if(!descripcion.equals(this.descripcion)){
+               this.descripcion= descripcion;}
+           else{System.out.println("Cambio no realizado, descripcion iguales");}}
     public String get_categoria(){
             return this.Categoria.get_TipoProducto();}
     public Double get_precio(){

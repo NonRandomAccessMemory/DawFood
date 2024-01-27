@@ -21,8 +21,24 @@ public class Tpv {
     public static void AñadirTicket(Ticket ticket){
     Ticket.add(ticket);}
     
-    public void BuscarPorDia()
-    {
-    
+    public ArrayList<Ticket> BuscarPor(int dia){
+        ArrayList<Ticket> tickets= new ArrayList<>();
+    for(Ticket t : Ticket){
+        if(t.getFecha().getDayOfMonth() == dia){
+            tickets.add(t);
+        }
     }
+        return tickets;
+    }
+    
+    public ArrayList<Ticket> BuscarPor(DateTime fecha){
+        ArrayList<Ticket> tickets= new ArrayList<>();
+    for(Ticket t : Ticket){
+        if(t.getFecha() == fecha){
+            tickets.add(t);
+        }
+    }
+     return tickets;
+    }
+  
 }
