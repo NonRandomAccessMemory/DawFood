@@ -10,8 +10,12 @@ import DawFoodSV.ClasesFuncionamiento.E_Categoria;
 import DawFoodSV.ClasesFuncionamiento.E_SubCategoria;
 import DawFoodSV.ClasesFuncionamiento.E_Usuario;
 import DawFoodSV.ClasesFuncionamiento.Producto;
+import DawFoodSV.ClasesFuncionamiento.TarjetaCredito;
+import DawFoodSV.ClasesFuncionamiento.Ticket;
 import DawFoodSV.ClasesFuncionamiento.Tpv;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -19,6 +23,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Date;
 
 /**
  *
@@ -32,6 +37,7 @@ public class Menu {
         
         CartaComida carta= new CartaComida();
         Carrito carrito = new Carrito();
+        Tpv ventas= new Tpv();
         //Menú encender maquina
         JOptionPane.showConfirmDialog(null, "Bienvenidos a DawFood", "DawFood", JOptionPane.DEFAULT_OPTION);
         //Bucle que muestra opción de encendido
@@ -43,8 +49,7 @@ public class Menu {
                     "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, botones, botones[0]);
             switch (variable) {
                 case 0 -> {
-
-                    tipoUsuario(carta, carrito);
+                    tipoUsuario(carta, carrito,ventas);
                     break;
                 }
                 case 1 -> {
@@ -61,7 +66,7 @@ public class Menu {
     }
 
     //Método para elegir menu de administración o usuario
-    private void tipoUsuario(CartaComida carta, Carrito carrito) {
+    private void tipoUsuario(CartaComida carta, Carrito carrito,Tpv ventas) {
         //Elección tipo usuario
         String[] botones1 = {"Modo Administrador", "Modo Usuario", "Atrás"};
         boolean continuar1 = true;
@@ -71,12 +76,12 @@ public class Menu {
             switch (variable1) {
                 //Opcion apertura de menú para admin
                 case 0 -> {
-                    modoAdmin(carta, carrito);
+                    modoAdmin(carta, carrito,ventas);
                     break;
                 }
                 //Opcion apertura menú para user
                 case 1 -> {
-                    modoUserIni(carta, carrito);
+                    modoUserIni(carta, carrito,ventas);
                     break;
                 }
 
@@ -95,7 +100,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void modoAdmin(CartaComida carta, Carrito carrito) {
+    private void modoAdmin(CartaComida carta, Carrito carrito,Tpv ventas) {
         String password = generarPasswordAdmin();
         //Llamar a admin para usar contraseña generada
         String passwordIntroducida = JOptionPane.showInputDialog(null,
@@ -124,7 +129,7 @@ public class Menu {
             } else {
                 //Sale del bucle y continua;
                 JOptionPane.showMessageDialog(null, "Contraseña correcta", "DawFood", JOptionPane.INFORMATION_MESSAGE);
-                opcionElegidAdmin(carta, carrito);
+                opcionElegidAdmin(carta, carrito,ventas);
             }
         } while (continuar3);
 
@@ -163,7 +168,7 @@ public class Menu {
                 }
                 case "3-. Borrar productos existentes." -> {
                     System.out.println("3");
-                    String productosDisponibles=Mostrar(carta,carrito,E_Categoria.Comida);
+                    String productosDisponibles=MostrarPorCategoria(carta,carrito,E_Categoria.Comida);
                     /*Sacar Metodo*/
                     String eleccionHb = JOptionPane.showInputDialog(null, productosDisponibles, "DawFood", 0);
                     boolean estahecho=carta.BorrarProducto(new Producto(Integer.parseInt(eleccionHb)), E_Usuario.Administrador);
@@ -178,7 +183,7 @@ public class Menu {
                     break;
                 }
                 case "5-. Atrás" -> {
-                    tipoUsuario(carta, carrito);
+                    tipoUsuario(carta, carrito,ventas);
                     break;
                 }
                 default -> {
@@ -206,19 +211,45 @@ public class Menu {
             switch (opcionesElegidaVentas) {
                 case "1-. En un día concreto." -> {
                     System.out.println("1");
+                    /*añadir dia*/
+                    String eleccionHb = JOptionPane.showInputDialog(null, "Introduzca un dia", "DawFood", 0);
+                    ArrayList<Ticket> tickets;
+                    tickets=ventas.BuscarPor(Integer.parseInt(eleccionHb));
+                    tickets.forEach((p)->p.toString());
                     break;
 
                 }
                 case "2-. Hasta una fecha concreta." -> {
                     System.out.println("2");
+                    String dia= new String();
+                    String mes= new String(); 
+                    String eleccionHb = JOptionPane.showInputDialog(null, "Introduzca una fecha", "DawFood", 0);
+                    dia= eleccionHb.substring(0, eleccionHb.indexOf('/'));
+                    mes= eleccionHb.substring(eleccionHb.indexOf('/'));
+                    /*Extraer el día usando / como descartador*/
+                    /*Extraer el mes*/
+                    ventas.BuscarPor(LocalDate.of(Integer.parseInt(dia),Month.of(Integer.parseInt(mes)),LocalDate.now().getYear()));
+                    
                     break;
                 }
                 case "3-. Todas las ventas que haya registradas." -> {
                     System.out.println("3");
+                    StringBuilder sb= new StringBuilder();
+                    ArrayList<Ticket> ventasRealizadas;
+                    ventasRealizadas=ventas.todasLasVentas();
+                    int contador= 0;
+                    for(Ticket t : ventasRealizadas){
+                        contador += 1;
+                        sb.append("Venta:").append(contador).append(t.getId()).append("   ")
+                                           .append("Fecha: ").append(t.getFecha().getDayOfMonth())
+                                           .append("/").append(t.getFecha().getDayOfYear()).append("\n");
+                        
+                    }
+                    JOptionPane.showMessageDialog(null, sb.toString());
                     break;
                 }
                 case "4-. Atrás" -> {
-                    opcionElegidAdmin(carta, carrito);
+                    opcionElegidAdmin(carta, carrito,ventas);
                     break;
                 }
                 default -> {
@@ -230,7 +261,7 @@ public class Menu {
 
     }
 
-    private void modoUserIni(CartaComida carta, Carrito carrito) {
+    private void modoUserIni(CartaComida carta, Carrito carrito,Tpv ventas) {
         boolean continuar = true;
         String[] botones = {"Comienza tu pedido", "<-"};
         do {
@@ -240,12 +271,12 @@ public class Menu {
             switch (variable) {
                 //Opcion apertura de menú pedido
                 case 0 -> {
-                    modoUserCarta(carta, carrito);
+                    modoUserCarta(carta, carrito,ventas);
                     break;
                 }
                 //Opcion apertura menú usuarios
                 case 1 -> {
-                    tipoUsuario(carta, carrito);
+                    tipoUsuario(carta, carrito,ventas);
                     break;
                 }
                 default -> {
@@ -256,9 +287,9 @@ public class Menu {
         } while (continuar);
     }
 
-    private void modoUserCarta(CartaComida carta, Carrito carrito) {
+    private void modoUserCarta(CartaComida carta, Carrito carrito,Tpv ventas) {
         //Eleccion menu 
-        String[] botones1 = {"Ver COMIDAS", "Ver BEBIDAS", "Ver POSTRES", "<-"};
+        String[] botones1 = {"Ver COMIDAS", "Ver BEBIDAS", "Ver POSTRES","Ver la Cesta","Pagar", "<-"};
         boolean continuar1 = true;
 
         do {
@@ -269,25 +300,43 @@ public class Menu {
                 //Opcion apertura de menú COMIDAS
                 case 0 -> {
                     System.out.println("comida");
-                    cartaComidas(carta, carrito);
+                    cartaComidas(carta, carrito,ventas);
                     break;
                 }
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
                     System.out.println("bebida");
-                    cartaBebida(carta, carrito);
+                    cartaBebida(carta, carrito,ventas);
                     break;
                 }
                 //Opcion apertura menú POSTRES
                 case 2 -> {
                     System.out.println("Postre");
-                    cartaPostre(carta,carrito);
+                    cartaPostre(carta,carrito,ventas);
                     break;
                 }
 
+                case 3 ->{
+                     System.out.println("Ver La cesta");
+                     JOptionPaneMuestra(carrito.VerCarrito());
+                    break;}
+                
+                case 4 ->{
+                     System.out.println("Pagar");
+                     /*
+                     Muestra el carrito y solicita el numero te tarjeta
+                     Mostrar el estado de la venta
+                     Muestra si se ha realizado bien el proceso*/
+                     JOptionPaneMuestra(carrito.VerCarrito());
+                     String numeroTarjeta=JPaneInserta("Inserte el numero de tarjeta");
+                     JOptionPaneMuestra(carrito.ProcesarCompra(numeroTarjeta));
+                     
+                     /*Mostrar el estado de la venta*/
+                     /*Eliminar todos los productos del carrito*/
+                    break;}
                 //Opcion volver menu encendido
-                case 3 -> {
-                    modoUserIni(carta, carrito);
+                case 5 -> {
+                    modoUserIni(carta, carrito,ventas);
                     break;
                 }
 
@@ -300,7 +349,7 @@ public class Menu {
         } while (continuar1);
     }
     
-    private void cartaComidas(CartaComida carta,Carrito carrito) {
+    private void cartaComidas(CartaComida carta,Carrito carrito,Tpv venta) {
         //Eleccion menu comida 
         String[] botones1 = {"HAMBURGUESA", "PATATAS", "ENSALADAS", "<-"};
         boolean continuar1 = true;
@@ -310,28 +359,27 @@ public class Menu {
                     "DawFood", JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE, null, botones1, botones1[0]);
             switch (variable1) {
-                
+
                 case 0 -> {
                     System.out.println("HAMBURGUESA");
-                    MostrarYSeleccionar(carta,carrito,E_Categoria.Comida, E_SubCategoria.Hamburguesa);
-                    break;
-                }
-                
-                case 1 -> {
-                    System.out.println("PATATAS");
-                    MostrarYSeleccionar( carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
-                    break;
-                }
-                
-                case 2 -> {
-                    System.out.println("ENSALADAS");
-                    MostrarYSeleccionar(carta, carrito,E_Categoria.Comida, E_SubCategoria.Ensalada);
+                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
-                
+                case 1 -> {
+                    System.out.println("PATATAS");
+                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("ENSALADAS");
+                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
+                    break;
+                }
+
                 case 3 -> {
-                    modoUserCarta(carta, carrito);
+                    modoUserCarta(carta, carrito, venta);
                     break;
                 }
 
@@ -344,7 +392,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void cartaBebida(CartaComida carta,Carrito carrito) {
+    private void cartaBebida(CartaComida carta,Carrito carrito,Tpv ventas) {
         //Eleccion menu 
         String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "BEBIDAS CALIENTES", "<-"};
         boolean continuar1 = true;
@@ -374,7 +422,7 @@ public class Menu {
 
                 
                 case 3 -> {
-                    modoUserIni(carta, carrito);
+                    modoUserIni(carta, carrito,ventas);
                     break;
                 }
 
@@ -387,7 +435,7 @@ public class Menu {
         } while (continuar1);
     }
     
-    private void cartaPostre(CartaComida carta,Carrito carrito) {
+    private void cartaPostre(CartaComida carta,Carrito carrito,Tpv ventas) {
         //Eleccion menu 
         String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "Con ", "<-"};
         boolean continuar1 = true;
@@ -418,7 +466,7 @@ public class Menu {
 
                 
                 case 3 -> {
-                    modoUserIni(carta, carrito);
+                    modoUserIni(carta, carrito,ventas);
                     break;
                 }
 
@@ -458,9 +506,10 @@ public class Menu {
     }
     
    
-   public String Mostrar(CartaComida carta, Carrito carrito,E_Categoria categoria)
+   /*Metodos de Operacion*/
+   public String MostrarPorCategoria(CartaComida carta, Carrito carrito,E_Categoria categoria)
     {
-                    ArrayList<Producto> productos;
+                    ArrayList<Producto> productos= new ArrayList<>();
                     /*Switch para seleccionar la lista deseada*/
                     switch(categoria.get_TipoProducto()){
                     
@@ -504,5 +553,12 @@ public class Menu {
         }
 
     }         
+
+    public void JOptionPaneMuestra(String mensaje){
+        JOptionPane.showInputDialog(null, mensaje);
+      }
+    public String JPaneInserta(String mensaje){
+           return JOptionPane.showInputDialog(null, mensaje);
+       }
 }
    

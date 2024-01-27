@@ -5,6 +5,7 @@
 package DawFoodSV.ClasesFuncionamiento;
 
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,8 +31,9 @@ public boolean ProcesoDePago(double cantidad,String numeroTarjeta){
              if(p.getNumTarjeta().contentEquals(numeroTarjeta)){
                     tarjeta=p;
                     break;}}
-                    
+    usuariocvv=JPaneInserta("Inserte el codigo CVV, por favor");
     if(tarjeta.getCvv().equalsIgnoreCase(usuariocvv)){
+             String fecha=JPaneInserta("Inserte el codigo CVV, por favor. DD/MM");
              if(tarjeta.getFecha().equalsIgnoreCase(usuariofecha)){
                   tarjeta.restarFondos(cantidad);
                   return true;}
@@ -43,5 +45,7 @@ public boolean ProcesoDePago(double cantidad,String numeroTarjeta){
        }
     return false;
    }
-        
+    public String JPaneInserta(String mensaje) {
+        return JOptionPane.showInputDialog(null, mensaje);
+    }
 }
