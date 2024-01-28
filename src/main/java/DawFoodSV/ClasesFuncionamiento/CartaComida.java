@@ -22,9 +22,9 @@ public class CartaComida {
    this.postres= new ArrayList<>();
    this.bebidas= new ArrayList<>();
        //Añado objetos
-   comidas.add(new Producto(1,"Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
-   comidas.add(new Producto(3,"Hamburgusa Mcfit","Hamburguesa de ternera que sigue engondando",E_Categoria.Comida,E_SubCategoria.Hamburguesa,8.99,E_Iva.Siete,12));
-   comidas.add(new Producto(2,"Hamburgusa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,10.99,E_Iva.Siete,12));
+   comidas.add(new Producto(1," Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
+   comidas.add(new Producto(3," Hamburguesa Mcfit[Pollo]","Hamburguesa de pollo",E_Categoria.Comida,E_SubCategoria.Hamburguesa,8.99,E_Iva.Siete,12));
+   comidas.add(new Producto(2," Hamburguesa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,10.99,E_Iva.Siete,12));
    comidas.add(new Producto(4,"Patatas Gajo","Patatas gajos muy buenas y saludables",E_Categoria.Comida,E_SubCategoria.Patatas,2.99,E_Iva.Siete,30));
    comidas.add(new Producto(5,"Patatas finas","Patatas fritas finas",E_Categoria.Comida,E_SubCategoria.Patatas,0.99,E_Iva.Siete,28));
    comidas.add(new Producto(6,"Patatas clasicas","Patatas fritas gruesas",E_Categoria.Comida,E_SubCategoria.Patatas,1.99,E_Iva.Siete,78));
@@ -37,13 +37,18 @@ public class CartaComida {
    postres.add(new Producto(12,"McDawFlurry","Helado con leche",E_Categoria.Postre,E_SubCategoria.Helados,3.99,E_Iva.Siete,12));
    postres.add(new Producto(13,"ConoChocolateNata","Helado de cono con chocolate",E_Categoria.Postre,E_SubCategoria.Helados,1.99,E_Iva.Siete,12));
    postres.add(new Producto(14,"Yogur con toppin","Yogur helado natural",E_Categoria.Postre,E_SubCategoria.PostresCaseros,2.99,E_Iva.Siete,12));
+   postres.add(new Producto(22,"Tarta de queso","Tarta de queso con mermermelada de fresa",E_Categoria.Postre,E_SubCategoria.PostresCaseros,7.99,E_Iva.Siete,5));
    
    bebidas.add(new Producto(15,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,25));
-   bebidas.add(new Producto(16,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Doce,25));
-   bebidas.add(new Producto(17,"Ceveza","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Alcoholicas,2.00,E_Iva.Doce,30));
+   bebidas.add(new Producto(16,"Cerveza sin","Cerveza Sin",E_Categoria.Bebida,E_SubCategoria.Cervezas,1.99,E_Iva.Doce,25));
+   bebidas.add(new Producto(17,"Ceveza","Cerveza alcoholica",E_Categoria.Bebida,E_SubCategoria.Cervezas,2.00,E_Iva.Doce,30));
    bebidas.add(new Producto(18,"Kas","Kas de Naranja",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,21));
-   bebidas.add(new Producto(19,"Pepsi Max","Pepsi zero zero",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Siete,27));
-   bebidas.add(new Producto(1,"Pepsi","Pepsi Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,12));
+   bebidas.add(new Producto(19,"Pepsi Max","Pepsi zero zero",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Siete,27));
+   bebidas.add(new Producto(20,"Nestea","Nestea Clasica",E_Categoria.Bebida,E_SubCategoria.Azucaradas,1.99,E_Iva.Doce,12));
+   bebidas.add(new Producto(21,"Kas Max","Kas de Naranja sin azúcar",E_Categoria.Bebida,E_SubCategoria.SinAzucar,2.35,E_Iva.Doce,21));
+   bebidas.add(new Producto(22,"Aquarade Max","Bebida isotonica zero",E_Categoria.Bebida,E_SubCategoria.SinAzucar,1.99,E_Iva.Siete,27));
+   bebidas.add(new Producto(20,"Cerveza DawFood - Doble lupulo","Cerveza original con doble lupulo",E_Categoria.Bebida,E_SubCategoria.Cervezas,1.99,E_Iva.Doce,12));
+   
    
    
    
@@ -124,7 +129,7 @@ public class CartaComida {
    public ArrayList<Producto> get_Postres(){
         return (ArrayList<Producto>)this.postres.clone();}
    
-   /*Devuelvo una lista de productos basados en su categoria y subcategoria pasame una Categoria(enum) y subCategoria(enum) GRACIAS*/
+   //Devuelvo una lista de productos basados en su categoria y subcategoria pasame una Categoria(enum) y subCategoria(enum) GRACIAS
    public ArrayList<Producto> devolverPorSubcategoria(E_Categoria categoria,E_SubCategoria subcategoria){
        ArrayList<Producto> productosPorSubcategoria= new ArrayList<>();
        

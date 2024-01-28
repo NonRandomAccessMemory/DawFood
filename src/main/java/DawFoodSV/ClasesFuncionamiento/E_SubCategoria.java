@@ -9,7 +9,7 @@ package DawFoodSV.ClasesFuncionamiento;
  * @author snavgar
  */
 public enum E_SubCategoria {
-    Azucaradas("Azucaradas"),SinAzucar("SinAzucar"),Alcoholicas("Alcoholicas"),
+    Azucaradas("Azucaradas"),Cervezas("SinAzucar"),SinAzucar("Alcoholicas"),
     Hamburguesa("Hamburguesa"),Ensalada("Ensalada"),Patatas("Patatas"),
     Helados("Helados"),PostresCaseros("Postre"),Tartas("Postre");
     
