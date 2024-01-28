@@ -305,7 +305,7 @@ public class Menu {
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
                     System.out.println("bebida");
-                    cartaBebida(carta, carrito, ventas);
+                    //cartaBebida(carta, carrito, ventas);
                     break;
                 }
                 //Opcion apertura menú POSTRES
@@ -350,36 +350,33 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void cartaComidas(CartaComida carta, Carrito carrito, Tpv venta) {
+    private void cartaComidas(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu comida 
         String[] botones1 = {"HAMBURGUESA", "PATATAS", "ENSALADAS", "<-"};
         boolean continuar1 = true;
-
         do {
             int variable1 = JOptionPane.showOptionDialog(null, " CARTA COMIDA: ",
                     "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
             switch (variable1) {
-
                 case 0 -> {
                     System.out.println("HAMBURGUESA");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
-                    break;
+                    cartaHamburguesa(carta, carrito, ventas);
+                      break;
                 }
-
                 case 1 -> {
                     System.out.println("PATATAS");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
                     break;
                 }
 
                 case 2 -> {
                     System.out.println("ENSALADAS");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
                     break;
                 }
 
                 case 3 -> {
-                    modoUserCarta(carta, carrito, venta);
+                    modoUserCarta(carta, carrito, ventas);
                     break;
                 }
 
@@ -387,46 +384,49 @@ public class Menu {
                     iniciarTPV();
                     System.exit(0);
                 }
-            }
-
-        } while (continuar1);
+            }              
+    }
+    while (continuar1);
+    
     }
 
-    private void cartaBebida(CartaComida carta, Carrito carrito, Tpv ventas) {
+
+    private void cartaHamburguesa(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu 
-        String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "CERVEZAS", "Ver Carriro", "<-"};
+        String[] botones1 = {"SIMPLE", "MCFIT", "CON QUESO", "Menú Incio", "<-"};
         boolean continuar1 = true;
 
         do {
 
-            int variable1 = JOptionPane.showOptionDialog(null, "Carta BEBIDAS: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
+            int variable1 = JOptionPane.showOptionDialog(null, "Elige una HAMBURGUESA: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
             switch (variable1) {
 
                 case 0 -> {
-                    System.out.println("AZUCARADAS");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Azucaradas);
+                    System.out.println("SIMPLE");
+
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
                 case 1 -> {
-                    System.out.println("SIN AZUCAR");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
+                    System.out.println("MCFIT");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
                     break;
                 }
 
                 case 2 -> {
-                    System.out.println("CERVEZAS");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
+                    System.out.println("CON QUESO");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
                 case 3 -> {
-                    //Hay que llamar al carrito
-                    //carrito(carta, carrito,ventas);
+                   System.out.println("Volver al menu inical");
+                    modoUserIni(carta, carrito, ventas);
                     break;
                 }
                 case 4 -> {
-                    modoUserIni(carta, carrito, ventas);
+                   modoUserCarta(carta, carrito, ventas);
                     break;
                 }
 
@@ -441,34 +441,38 @@ public class Menu {
 
     private void cartaPostre(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu 
-        String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "Con ", "<-"};
+        String[] botones1 = {"AZUCARADAS", "SIN AZUCAR", "CERVEZAS", "Ver Carriro", "<-"};
         boolean continuar1 = true;
 
         do {
-            int variable1 = JOptionPane.showOptionDialog(null, " CARTA POSTRES: ",
-                    "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
 
+            int variable1 = JOptionPane.showOptionDialog(null, "Carta BEBIDAS: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
             switch (variable1) {
 
                 case 0 -> {
-                    System.out.println("Casero");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Postre, E_SubCategoria.PostresCaseros);
+                    System.out.println("AZUCARADAS");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Azucaradas);
                     break;
                 }
 
                 case 1 -> {
                     System.out.println("SIN AZUCAR");
-                    MostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
                     break;
                 }
 
                 case 2 -> {
-                    System.out.println("BEBIDAS CALIENTES");
-
+                    System.out.println("CERVEZAS");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
                     break;
                 }
 
                 case 3 -> {
+                    //Hay que llamar al carrito
+                    //carrito(carta, carrito,ventas);
+                    break;
+                }
+                case 4 -> {
                     modoUserIni(carta, carrito, ventas);
                     break;
                 }
@@ -532,8 +536,31 @@ public class Menu {
 
         return sb.toString();
     }
+    
+    public void mostrarUnProductoLista(CartaComida carta, Carrito carrito,E_Categoria categoria, E_SubCategoria subcategoria){
+        ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
+        /*en una variable del tipo string almacenar con un for la lista y su posicion*/
 
-    public void MostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
+        StringBuilder sb = new StringBuilder();
+        int posicion = 0;
+        for (Producto p : productos) {
+            posicion += 1;
+            sb.append(posicion).append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+        }
+        /*primir con el JoptionPane el string*/
+        String eleccionHb = JOptionPane.showInputDialog(null, sb.toString(), "DawFood", 0);
+
+        if (!productos.isEmpty()) {
+            Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
+            System.out.println(p.toString());
+            carrito.AñadirElemento(p, 1);
+            System.out.println(carrito.VerCarrito());
+        }
+
+    }         
+
+
+    public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
         ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
         /*en una variable del tipo string almacenar con un for la lista y su posicion*/
 
@@ -549,7 +576,7 @@ public class Menu {
             try {
                 int eleccion = Integer.parseInt(JOptionPane.showInputDialog(null, sb.toString(), "Elige una opción"));
                 System.out.println("eleccion: " + eleccion);
-                
+
                 if (eleccion <= 0 || eleccion > productos.size()) {
                     JOptionPane.showMessageDialog(null, "La eleccion tiene que ser en el rango mostrado");
                     continuar = true;

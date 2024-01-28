@@ -22,7 +22,7 @@ public class CartaComida {
    this.postres= new ArrayList<>();
    this.bebidas= new ArrayList<>();
        //Añado objetos
-   comidas.add(new Producto(1," Hamburguesa","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
+   comidas.add(new Producto(1," Hamburguesa simple","Hamburguesa de ternera",E_Categoria.Comida,E_SubCategoria.Hamburguesa,9.99,E_Iva.Siete,12));
    comidas.add(new Producto(3," Hamburguesa Mcfit[Pollo]","Hamburguesa de pollo",E_Categoria.Comida,E_SubCategoria.Hamburguesa,8.99,E_Iva.Siete,12));
    comidas.add(new Producto(2," Hamburguesa con queso","Hamburguesa de ternera con queso",E_Categoria.Comida,E_SubCategoria.Hamburguesa,10.99,E_Iva.Siete,12));
    comidas.add(new Producto(4,"Patatas Gajo","Patatas gajos muy buenas y saludables",E_Categoria.Comida,E_SubCategoria.Patatas,2.99,E_Iva.Siete,30));
