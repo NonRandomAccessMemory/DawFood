@@ -6,6 +6,7 @@ package DawFoodSV.ClasesFuncionamiento;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,6 +68,32 @@ public class CartaComida {
                     break;
             }
         }
+    }
+    
+    /*public void imprimirInformacionProductos(ArrayList<Producto> listaProductos) {
+        for (Producto producto : listaProductos) {
+            System.out.println("Nombre: " + producto.get_nombre());
+            System.out.println("Descripción: " + producto.get_descripcion());
+            System.out.println("Precio: " + producto.get_precio());
+            System.out.println("----------------------------------");
+        }
+    }*/
+    
+    public String obtenerInformacionProducto(ArrayList<Producto> listaProductos, String nombreProducto) {
+        StringBuilder info = new StringBuilder();
+
+        for (Producto producto : listaProductos) {
+            if (producto.get_nombre().equals(nombreProducto)) {
+                info.append("Nombre: ").append(producto.get_nombre()).append("\n");
+                info.append("Descripción: ").append(producto.get_descripcion()).append("\n");
+                info.append("Precio: ").append(producto.get_precio()).append("\n");
+                info.append("----------------------------------").append("\n");
+                // Si encuentras el producto por nombre, termina el bucle
+                break;
+            }
+        }
+
+        return info.toString();
     }
 
     public boolean BorrarProducto(Producto producto, E_Usuario usuario) {
