@@ -70,14 +70,7 @@ public class CartaComida {
         }
     }
     
-    /*public void imprimirInformacionProductos(ArrayList<Producto> listaProductos) {
-        for (Producto producto : listaProductos) {
-            System.out.println("Nombre: " + producto.get_nombre());
-            System.out.println("Descripción: " + producto.get_descripcion());
-            System.out.println("Precio: " + producto.get_precio());
-            System.out.println("----------------------------------");
-        }
-    }*/
+   
     
     public String obtenerInformacionProducto(ArrayList<Producto> listaProductos, String nombreProducto) {
         StringBuilder info = new StringBuilder();
