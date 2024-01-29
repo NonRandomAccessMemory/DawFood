@@ -624,7 +624,7 @@ public class Menu {
         return sb.toString();
     }
 
-    /*public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
+    public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
         ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
         //en una variable del tipo string almacenar con un for la lista y su posicion
 
@@ -640,12 +640,13 @@ public class Menu {
         if (!productos.isEmpty()) {
             Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
             System.out.println(p.toString());
-            carrito.AñadirElemento(p, 1);
+            String cantidad= JOptionPane.showInputDialog(null, "Inserta la cantidad", "DawFood", 0);
+            carrito.AñadirElemento(p, Integer.parseInt(cantidad));
             System.out.println(carrito.VerCarrito());
         }
 
-    }*/
-    
+    }
+    /*
     public void mostrarYSeleccionarComida(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
     // Obtener la lista de comidas de la carta
 
@@ -658,9 +659,9 @@ public class Menu {
         posicion += 1;
         sb.append(posicion).append(". ").append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
     }
-
+        
     // Verificar que la elección sea válida y agregar al carrito
-    if (nombre != null && !nombre.isEmpty()) {
+    if ((nombre != null) && (!nombre.isEmpty())) {
         int eleccionIndex = Integer.parseInt(nombre) - 1;
         if (eleccionIndex >= 0 && eleccionIndex < productos.size()) {
             Producto comidaSeleccionada = productos.get(eleccionIndex);
@@ -669,7 +670,7 @@ public class Menu {
         }
     }
 }
-
+*/
     public boolean elegirYModificar(ArrayList<Producto> lista, CartaComida carta) {
         ArrayList<Producto> productos = lista;
 
