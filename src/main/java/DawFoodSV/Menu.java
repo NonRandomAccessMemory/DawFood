@@ -441,6 +441,7 @@ public class Menu {
                 case 1 -> {
                     System.out.println("MCFIT");
                     carta.devolverPorNombre(E_Categoria.Comida, "MCFIT");
+                    mostrarYSeleccionarComida(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
@@ -623,7 +624,7 @@ public class Menu {
         return sb.toString();
     }
 
-    public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
+    /*public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
         ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
         //en una variable del tipo string almacenar con un for la lista y su posicion
 
@@ -643,7 +644,31 @@ public class Menu {
             System.out.println(carrito.VerCarrito());
         }
 
+    }*/
+    
+    public void mostrarYSeleccionarComida(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
+    // Obtener la lista de comidas de la carta
+
+    ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
+
+    // Construir el mensaje con las opciones de comida
+    StringBuilder sb = new StringBuilder();
+    int posicion = 0;
+    for (Producto p : productos) {
+        posicion += 1;
+        sb.append(posicion).append(". ").append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
     }
+
+    // Verificar que la elección sea válida y agregar al carrito
+    if (nombre != null && !nombre.isEmpty()) {
+        int eleccionIndex = Integer.parseInt(nombre) - 1;
+        if (eleccionIndex >= 0 && eleccionIndex < productos.size()) {
+            Producto comidaSeleccionada = productos.get(eleccionIndex);
+            carrito.AñadirElemento(comidaSeleccionada, 1);
+            System.out.println(carrito.VerCarrito());
+        }
+    }
+}
 
     public boolean elegirYModificar(ArrayList<Producto> lista, CartaComida carta) {
         ArrayList<Producto> productos = lista;
