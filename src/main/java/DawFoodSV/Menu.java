@@ -431,7 +431,7 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("SIMPLE");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, "SIMPLE");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida,"Hamburguesa simple");
                     String cantidad = JPaneInserta("Inserte la cantidad deseada");
                     carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
 
@@ -440,8 +440,8 @@ public class Menu {
 
                 case 1 -> {
                     System.out.println("MCFIT");
-                    carta.devolverPorNombre(E_Categoria.Comida, "MCFIT");
-                    mostrarYSeleccionarComida(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
+                    carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa Mcfit[Pollo]");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
