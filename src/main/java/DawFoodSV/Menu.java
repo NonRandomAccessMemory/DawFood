@@ -77,7 +77,7 @@ public class Menu {
             switch (variable1) {
                 //Opcion apertura de menú para admin
                 case 0 -> {
-                    modoAdmin(carta, carrito, ventas, categoria);
+                    modoAdmin(carta, carrito, ventas);
                     break;
                 }
                 //Opcion apertura menú para user
@@ -88,12 +88,12 @@ public class Menu {
 
                 //Opcion volver menu encendido
                 case 2 -> {
-                    iniciarTPV(categoria);
+                    iniciarTPV();
                     break;
                 }
 
                 default -> {
-                    iniciarTPV(categoria);
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -101,7 +101,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void modoAdmin(CartaComida carta, Carrito carrito, Tpv ventas, E_Categoria categoria) {
+    private void modoAdmin(CartaComida carta, Carrito carrito, Tpv ventas) {
         String password = generarPasswordAdmin();
         //Llamar a admin para usar contraseña generada
         String passwordIntroducida = JOptionPane.showInputDialog(null,
@@ -175,10 +175,10 @@ public class Menu {
                     boolean estahecho = carta.BorrarProducto(new Producto(Integer.parseInt(eleccionHb)), E_Usuario.Administrador);
                     if (estahecho) {
                         JOptionPane.showMessageDialog(null, "Elemento Borrado!");
-                    } else {
-                    }
+                    } else {}
                     break;
                 }
+                
                 case "4-. Consultar las ventas realizadas." -> {
                     consultarVentasAdmin(carta, carrito, ventas);
                     break;
@@ -262,7 +262,7 @@ public class Menu {
 
     }
 
-    private void modoUserIni(CartaComida carta, Carrito carrito, Tpv ventas, E_Categoria categoria) {
+    private void modoUserIni(CartaComida carta, Carrito carrito, Tpv ventas) {
         boolean continuar = true;
         String[] botones = {"Pedido", "<-"};
         do {
@@ -271,7 +271,7 @@ public class Menu {
             switch (variable) {
                 //Opcion apertura de menú pedido
                 case 0 -> {
-                    modoUserCarta(carta, carrito, ventas, categoria);
+                    modoUserCarta(carta, carrito, ventas);
                     break;
                 }
                 //Opcion apertura menú usuarios
@@ -305,13 +305,13 @@ public class Menu {
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
                     System.out.println("bebida");
-                    //cartaBebida(carta, carrito, ventas);
+                    //cartaBebidas(carta, carrito, ventas);
                     break;
                 }
                 //Opcion apertura menú POSTRES
                 case 2 -> {
-                    System.out.println("Postre");
-                    cartaPostre(carta, carrito, ventas);
+                    System.out.println("Ensalada");
+                    cartaEnsalada(carta,carrito,ventas);
                     break;
                 }
 
@@ -337,12 +337,12 @@ public class Menu {
                 }
                 //Opcion volver menu encendido
                 case 5 -> {
-                    modoUserIni(carta, carrito, ventas, categoria);
+                    modoUserIni(carta, carrito, ventas);
                     break;
                 }
 
                 default -> {
-                    iniciarTPV(categoria);
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -350,7 +350,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void cartaComidas(CartaComida carta, Carrito carrito, Tpv ventas, E_Categoria categoria) {
+    private void cartaComidas(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu comida 
         String[] botones1 = {"HAMBURGUESA", "PATATAS", "ENSALADAS", "<-"};
         boolean continuar1 = true;
@@ -360,28 +360,28 @@ public class Menu {
             switch (variable1) {
                 case 0 -> {
                     String nombre = "HAMBURGUESA";
-                    carta.devolverPorNombre(categoria, nombre);
+                    cartaHamburguesa(carta,carrito,ventas);
                     break;
                 }
                 case 1 -> {
                     System.out.println("PATATAS");
-                    cartaPatatas(carta, carrito, ventas, categoria);
+                    cartaPatatas(carta, carrito, ventas);
                     break;
                 }
 
                 case 2 -> {
                     System.out.println("ENSALADAS");
-                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
+                    cartaEnsalada(carta,carrito,ventas);
                     break;
                 }
 
                 case 3 -> {
-                    modoUserCarta(carta, carrito, ventas, categoria);
+                    modoUserCarta(carta, carrito, ventas);
                     break;
                 }
 
                 default -> {
-                    iniciarTPV(categoria);
+                    iniciarTPV();
                     System.exit(0);
                 }
             }
@@ -437,7 +437,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void cartaPatatas(CartaComida carta, Carrito carrito, Tpv ventas, E_Categoria categoria) {
+    private void cartaPatatas(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu 
         String[] botones1 = {"FINAS", "CLÁSICAS", "GAJO", "Menú Incio", "<-"};
         boolean continuar1 = true;
@@ -467,54 +467,6 @@ public class Menu {
 
                 case 3 -> {
                     System.out.println("Volver al menu inical");
-                    modoUserIni(carta, carrito, ventas, categoria);
-                    break;
-                }
-                case 4 -> {
-                    modoUserCarta(carta, carrito, ventas, categoria);
-                    break;
-                }
-
-                default -> {
-                    iniciarTPV();
-                    System.exit(0);
-                }
-            }
-
-        } while (continuar1);
-    }
-    
-    private void cartaHamburguesa(CartaComida carta, Carrito carrito, Tpv ventas) {
-        //Eleccion menu 
-        String[] botones1 = {"SIMPLE", "MCFIT", "CON QUESO", "Menú Incio", "<-"};
-        boolean continuar1 = true;
-
-        do {
-
-            int variable1 = JOptionPane.showOptionDialog(null, "Elige una HAMBURGUESA: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
-            switch (variable1) {
-
-                case 0 -> {
-                    System.out.println("SIMPLE");
-                    carta.devolverPorNombre(E_Categoria.Comida, "SIMPLE");
-
-                    break;
-                }
-
-                case 1 -> {
-                    System.out.println("MCFIT");
-                    carta.devolverPorNombre(E_Categoria.Comida, "MCFIT");
-                    break;
-                }
-
-                case 2 -> {
-                    System.out.println("CON QUESO");
-                    carta.devolverPorNombre(E_Categoria.Comida, "CON QUESO");
-                    break;
-                }
-
-                case 3 -> {
-                    System.out.println("Volver al menu inical");
                     modoUserIni(carta, carrito, ventas);
                     break;
                 }
@@ -532,7 +484,7 @@ public class Menu {
         } while (continuar1);
     }
 
-    private void cartaEnsalada(CartaComida carta, Carrito carrito, Tpv ventas, E_Categoria categoria) {
+    private void cartaEnsalada(CartaComida carta, Carrito carrito, Tpv ventas) {
         //Eleccion menu 
         String[] botones1 = {"MIXTA", "CESAR", "DAWFOOD", "Ver Carriro", "<-"};
         boolean continuar1 = true;
@@ -562,11 +514,11 @@ public class Menu {
 
                 case 3 -> {
                     //Hay que llamar al carrito
-                    carrito.VerCarrito(carta, carrito,ventas);
+                    carrito.VerCarrito();
                     break;
                 }
                 case 4 -> {
-                    modoUserIni(carta, carrito, ventas, categoria);
+                    modoUserIni(carta, carrito, ventas);
                     break;
                 }
 
