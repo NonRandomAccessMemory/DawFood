@@ -264,10 +264,10 @@ public class Menu {
                     ventasRealizadas = ventas.todasLasVentas();
                     int contador = 0;
                     for (Ticket t : ventasRealizadas) {
-                        contador += 1;
-                        sb.append("Venta:").append(contador).append(t.getId()).append("   ")
+                        contador++;
+                        sb.append("Venta:").append(t.getId()).append("   ")
                                 .append("Fecha: ").append(t.getFecha().getDayOfMonth())
-                                .append("/").append(t.getFecha().getDayOfYear()).append("\n");
+                                .append("/").append(t.getFecha()).append("\n").append(t.toString());
 
                     }
                     JOptionPane.showMessageDialog(null, sb.toString());

@@ -16,8 +16,8 @@ public class PasarelaDePago {
     
     public PasarelaDePago(){
         this.tarjetas= new HashSet<>();
-        tarjetas.add(new TarjetaCredito("Samuel","1234","123","1/25", 699.0f));
-        tarjetas.add(new TarjetaCredito("Vicky","2345","123","2/25", 699.0f));
+        tarjetas.add(new TarjetaCredito("Samuel","1234","123","01/25", 699.0f));
+        tarjetas.add(new TarjetaCredito("Vicky","2345","123","02/25", 699.0f));
     /*Añadir tarjetas de pago y sus fondos*/}
     
     
@@ -33,7 +33,7 @@ public boolean ProcesoDePago(double cantidad,String numeroTarjeta){
                     break;}}
     usuariocvv=JPaneInserta("Inserte el codigo CVV, por favor");
     if(tarjeta.getCvv().equalsIgnoreCase(usuariocvv)){
-             String fecha=JPaneInserta("Inserte el codigo CVV, por favor. DD/MM");
+             usuariofecha=JPaneInserta("Inserte la Fecha de Caducidad DD/MM");
              if(tarjeta.getFecha().equalsIgnoreCase(usuariofecha)){
                   tarjeta.restarFondos(cantidad);
                   return true;}

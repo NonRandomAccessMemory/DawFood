@@ -13,18 +13,20 @@ public class Ticket {
     private LocalDate fecha;
     private String productos[];
     private int elementosAñadidos=0;
+    private double total;
     
     public Ticket(Integer id, int numeroProductos){
         this.productos= new String[numeroProductos];
         this.fecha= LocalDate.now();
         this.id=id;
+        total=0;
     }
     
     public boolean AñadirElemento(ProductoVenta p)
     {
         if(elementosAñadidos < productos.length)
         {
-            
+            total+= ((p.get_precio() + ((p.get_precio() * p.Iva.get_iva()))) * p.unidades);
             productos[elementosAñadidos] =  p.toString();
             elementosAñadidos++;
         }
@@ -45,16 +47,16 @@ public class Ticket {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("-------------UltraMarinos PACO-------------");
-        sb.append("Ticket:").append(id);
-        sb.append(", fecha=").append(fecha);
+        sb.append("-------------UltraMarinos PACO-------------").append("\n");
+        sb.append("Ticket: ").append(id).append("\n");
+        sb.append("fecha= ").append(fecha).append("\n");
+        sb.append("Producto-----------Precio Sin iva------Con iva--------Unidades----------TOTAL").append("\n");
         for(int fila=0; fila < productos.length; fila++)
         {
-         sb.append(productos[fila]);
+         sb.append("*").append(" ").append(productos[fila]).append("\n");
         }
-        sb.append(", productos=").append(productos);
-        sb.append(", elementosA\u00f1adidos=").append(elementosAñadidos);
-        sb.append('}');
+        sb.append("Total Añadidos= ").append(this.elementosAñadidos).append("\n");
+        sb.append("TOTAL A PAGAR :").append(this.total);
         return sb.toString();
     }
     
