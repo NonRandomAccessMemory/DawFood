@@ -152,10 +152,31 @@ public class Menu {
             switch (opcionElegida) {
                 case "1-. Cambiar cualquier dato de los productos, excepto su ID." -> {
                     System.out.println("1");
-                    /*Selecionar tipo de producto
-                      mostrar lista con Productos
-                      Seleccionar Producto
-                      insertar producto cambiado*/
+                    String[] opcionesCambiardatos = {"1-. Hamburguesas","2-. Patatas.", "3-. Ensaladas.", "4-. Atrás"};
+                    
+                    String opcionElegidaCambiardatos = (String) JOptionPane.showInputDialog(null,
+                    "Elige una opción", "DawFood - Modo Mantenimiento",
+                    JOptionPane.QUESTION_MESSAGE, null,
+                    opcionesCambiardatos, "4-. Atrás");
+                    
+                    switch(opcionElegidaCambiardatos){
+                        case "1-. Hamburguesas":
+                              elegirYModificar(carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa),carta);
+                            break;
+                        case "2-. Patatas.":
+                              elegirYModificar(carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa),carta);
+                            break;
+                        case "3-. Ensaladas.":
+                              elegirYModificar(carta.devolverPorSubcategoria(E_Categoria.Comida, E_SubCategoria.Hamburguesa),carta);
+                            break;
+                        default: 
+                    iniciarTPV();
+                    System.exit(1);
+                    break;
+              
+                    
+                    }
+                
                     break;
                 }
                 case "2-. Dar de alta nuevos productos." -> {
@@ -615,6 +636,35 @@ public class Menu {
 
     }
 
+    public boolean elegirYModificar(ArrayList<Producto> lista,CartaComida carta){
+         ArrayList<Producto> productos= lista;
+   
+        StringBuilder sb = new StringBuilder();
+        int posicion = 0;
+        for (Producto p : productos) {
+            posicion += 1;
+            sb.append(p.get_nombre()).append(" ").append(p.get_precio()).append("\n");
+        }
+        //imprimir con el JoptionPane el string
+        String eleccionHb = JPaneInserta(sb.toString());
+
+        if (!productos.isEmpty()) {
+            Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
+            
+            /*Insertar Nombre*/
+            JPaneInserta("Inserte el Nuevo Nombre");
+            /*Insertar Descripcion*/
+            p.set_descripcion(JPaneInserta("Inserte la Nueva Descripción"));
+            /*Insertar Precio*/
+            p.setPrecio(Double.parseDouble(JPaneInserta("Inserte el nuevo Precio")));
+            /*Insertar stock*/
+            p.setStock(Integer.parseInt(JPaneInserta("Inserte el nuevo STOCK")));
+            carta.ModificarProducto(p, E_Usuario.Administrador);
+            return true;
+        }
+        return false;
+    }
+    
     //Método que nos servira para añadir cantidad
     public void elegirCantidadProducto(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
         ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);

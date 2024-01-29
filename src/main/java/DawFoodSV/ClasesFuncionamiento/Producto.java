@@ -61,6 +61,24 @@ public class Producto {
     }
     public int get_stock(){
         return this.stock;}
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 3;

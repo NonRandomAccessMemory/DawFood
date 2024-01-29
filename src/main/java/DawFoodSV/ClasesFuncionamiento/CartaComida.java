@@ -102,11 +102,18 @@ public class CartaComida {
     }
 
     public boolean ModificarProducto(Producto p, E_Usuario usuario) {
-        //Dado un objeto pre seleccionado p
-        //Modificar el objeto seleccionado previamente sin cambiar id
-        //realizar el cambio
-        //si el cambio ha sido erroneo devolver false
-        //this.bebidas.set()
+         switch (p.get_categoria()) {
+                case "Bebida":
+                      bebidas.add( bebidas.indexOf(p), p);
+                    break;
+                case "Comida":
+                       comidas.add( comidas.indexOf(p), p);
+                    
+                    break;
+                case "Postre":
+                     postres.add( bebidas.indexOf(p), p);
+                    break;
+            }
         return true;
     }
 
