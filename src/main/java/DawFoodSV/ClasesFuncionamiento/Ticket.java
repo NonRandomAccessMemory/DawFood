@@ -45,15 +45,15 @@ public class Ticket {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("-------------UltraMarinos PACO-------------");
-        sb.append("Ticket:").append(id);
-        sb.append(", fecha=").append(fecha);
+        sb.append("-------------UltraMarinos PACO-------------").append("\n");
+        sb.append("Ticket:").append(id).append("\n");
+        sb.append(", fecha=").append(fecha).append("\n");
         for(int fila=0; fila < productos.length; fila++)
         {
-         sb.append(productos[fila]);
+         sb.append(productos[fila]).append("\n");
         }
-        sb.append(", productos=").append(productos);
-        sb.append(", elementosA\u00f1adidos=").append(elementosAñadidos);
+        sb.append(", productos=").append(productos).append("\n");
+        sb.append(", Total Añadidos=").append(elementosAñadidos).append("\n");
         sb.append('}');
         return sb.toString();
     }

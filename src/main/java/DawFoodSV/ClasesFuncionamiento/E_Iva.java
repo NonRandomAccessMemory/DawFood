@@ -9,11 +9,11 @@ package DawFoodSV.ClasesFuncionamiento;
  * @author snavgar
  */
 public enum E_Iva {
-    Siete(7),Doce(12);
-    private int iva;
-    private E_Iva(int iva){
+    Siete(0.07),Doce(0.12);
+    private double iva;
+    private E_Iva(double iva){
     this.iva=iva;}
     
-    public int get_iva(){
+    public double get_iva(){
        return this.iva;}
 }

@@ -28,8 +28,10 @@ public class ProductoVenta extends Producto {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.get_nombre()).append(" ").append(this.unidades).append(" ")
-                .append(this.get_precio()).append(" ").append(this.get_precio() * this.Iva.get_iva());
+        sb.append(this.get_nombre()).append("        ").append(this.get_precio()).append("       ")
+                .append(this.get_precio() + (this.get_precio() * this.Iva.get_iva())).append("     ").append("           ")
+                .append(this.unidades).append("                 ")
+                .append(((this.get_precio() + (this.get_precio() * this.Iva.get_iva())) * this.unidades));
         
         return sb.toString();
     }
