@@ -645,7 +645,7 @@ public class Menu {
             Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
             
             /*Insertar Nombre*/
-            JPaneInserta("Inserte el Nuevo Nombre");
+            p.setNombre(JPaneInserta("Inserte el Nuevo Nombre"));
             /*Insertar Descripcion*/
             p.set_descripcion(JPaneInserta("Inserte la Nueva Descripción"));
             /*Insertar Precio*/
@@ -683,7 +683,8 @@ public class Menu {
                     if (!productos.isEmpty()) {
                         Producto p = productos.get(eleccion - 1);
                         System.out.println(p.toString());
-                        carrito.AñadirElemento(p, 1);
+                        String cantidad = JPaneInserta("Inserte la cantidad deseada");
+                        carrito.AñadirElemento(p, Integer.parseInt(cantidad));
                         System.out.println(carrito.VerCarrito());
                         continuar = false;
                     }
