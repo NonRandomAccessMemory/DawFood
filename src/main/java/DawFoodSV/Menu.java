@@ -431,7 +431,7 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("SIMPLE");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida,"Hamburguesa simple");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa simple");
                     String cantidad = JPaneInserta("Inserte la cantidad deseada");
                     carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
 
@@ -447,7 +447,8 @@ public class Menu {
 
                 case 2 -> {
                     System.out.println("CON QUESO");
-                    carta.devolverPorNombre(E_Categoria.Comida, "CON QUESO");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa con queso");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
                     break;
                 }
 
@@ -487,19 +488,22 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("FINAS");
-                    carta.devolverPorNombre(E_Categoria.Comida, "FINAS");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Patatas finas");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
                     break;
                 }
 
                 case 1 -> {
                     System.out.println("CLÁSICAS");
-                    carta.devolverPorNombre(E_Categoria.Comida, "CLÁSICAS");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Patatas clasicas");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
                     break;
                 }
 
                 case 2 -> {
                     System.out.println("GAJO");
-                    carta.devolverPorNombre(E_Categoria.Comida, "GAJO");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Patatas Gajo");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
                     break;
                 }
 
@@ -536,19 +540,22 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("MIXTA");
-                    carta.devolverPorNombre(E_Categoria.Comida, "MIXTA");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Ensalada mixta");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
                     break;
                 }
 
                 case 1 -> {
                     System.out.println("CESAR");
-                    carta.devolverPorNombre(E_Categoria.Comida, "CESAR");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Ensalada cesar");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
                     break;
                 }
 
                 case 2 -> {
                     System.out.println("DAWFOOD");
-                    carta.devolverPorNombre(E_Categoria.Comida, "DAWFOOD");
+                    carta.devolverPorNombre(E_Categoria.Comida, "Ensalada DawFood");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Ensalada);
                     break;
                 }
 
@@ -640,12 +647,13 @@ public class Menu {
         if (!productos.isEmpty()) {
             Producto p = productos.get((Integer.parseInt(eleccionHb) - 1));
             System.out.println(p.toString());
-            String cantidad= JOptionPane.showInputDialog(null, "Inserta la cantidad", "DawFood", 0);
+            String cantidad = JOptionPane.showInputDialog(null, "Inserta la cantidad", "DawFood", 0);
             carrito.AñadirElemento(p, Integer.parseInt(cantidad));
             System.out.println(carrito.VerCarrito());
         }
 
     }
+
     /*
     public void mostrarYSeleccionarComida(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
     // Obtener la lista de comidas de la carta
@@ -670,7 +678,7 @@ public class Menu {
         }
     }
 }
-*/
+     */
     public boolean elegirYModificar(ArrayList<Producto> lista, CartaComida carta) {
         ArrayList<Producto> productos = lista;
 
