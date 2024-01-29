@@ -33,6 +33,15 @@ public class Ticket {
     public void AñadirFecha(LocalDate horaLocal){
         this.fecha=horaLocal;}
 
+    public Integer getId() {
+        return id;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

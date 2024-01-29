@@ -12,10 +12,12 @@ import java.util.ArrayList;
  * @author snavgar
  */
 public class Carrito {
-    private PasarelaDePago pasarelaPago= new PasarelaDePago();
-    private ArrayList<ProductoVenta> m_carrito= new ArrayList<>();
+    private PasarelaDePago pasarelaPago;
+    private ArrayList<ProductoVenta> m_carrito;
     
     public Carrito(){
+        pasarelaPago=new PasarelaDePago();
+        m_carrito= new ArrayList<>();
     }
     
     public void AñadirElemento(Producto producto,int cantidad){
@@ -68,10 +70,12 @@ public class Carrito {
                 return "Inserte una tarjeta valida";
             }
             Tarjeta=numeroTarjeta;
+            /*Procesa el pago y retira fondos de la tarjeta devuelve true o false si lo consigue*/
             boolean estado=pasarelaPago.ProcesoDePago(totalAcobrar,Tarjeta);
-            
+         
             if(estado){
                String ticketResultado=ProcesarTicket();
+               this.limpiarLista();
                return ticketResultado;
             }
             else{
@@ -80,7 +84,6 @@ public class Carrito {
                   return resultadoError;
                 /*VOLVER AL MENU PRINCIPAL*/}
     }
-    
     /*Devuelve el texto con el ticket que debe ser mostrado en el JoptionPane*/
     private String ProcesarTicket(){
                 Tpv.VENTASTOTALES+=1;
@@ -95,6 +98,11 @@ public class Carrito {
                 Tpv.AñadirTicket(ticket);
                 return textoTicket;
                 
+    }
+    
+     private void limpiarLista(){
+    /*Limpia la lista de los productos en el carrito*/
+        m_carrito.clear();
     }
     
 }
