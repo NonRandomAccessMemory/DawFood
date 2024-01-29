@@ -181,11 +181,15 @@ public class Menu {
                 }
                 case "2-. Dar de alta nuevos productos." -> {
                     System.out.println("2");
-                    /*
-                    JOptionPane.showInputDialog();
-                    Producto p= new Producto();
+                    Producto p= new Producto(carta.get_Comidas().size()+1);
+                    p.setNombre(JPaneInserta("Inserte el Nombre del producto"));
+                    /*AÑADIR SELECCIONAR TIPO PRODUCTO*/
+                    p.Categoria=E_Categoria.Comida;
+                    p.subCategoria=E_SubCategoria.Hamburguesa;
+                    p.setDescripcion(JPaneInserta("Inserte la descripcion"));
+                    p.setPrecio(Double.parseDouble(JPaneInserta("Inserte Precio")));
+                    p.setStock(Integer.parseInt(JPaneInserta("Inserte el numero de stock")));
                     carta.InsertarProducto(p, E_Usuario.Administrador);
-                     */
                     break;
                 }
                 case "3-. Borrar productos existentes." -> {
@@ -602,17 +606,6 @@ public class Menu {
 
         return sb.toString();
     }
-
-    /*public Producto elegirProductoYCantidad(CartaComida carta){
-        ArrayList<Producto> produc;
-        for(Producto p : produc){
-        
-            if(p.get_nombre()== nombre){
-                return p;
-                break;}
-        }
-        
-    }*/
 
     public void mostrarYSeleccionar(CartaComida carta, Carrito carrito, E_Categoria categoria, E_SubCategoria subcategoria) {
         ArrayList<Producto> productos = carta.devolverPorSubcategoria(categoria, subcategoria);
