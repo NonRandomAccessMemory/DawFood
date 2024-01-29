@@ -426,7 +426,9 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("SIMPLE");
-                    carta.devolverPorNombre(E_Categoria.Comida, "SIMPLE");
+                    Producto hamburguesa=carta.devolverPorNombre(E_Categoria.Comida, "SIMPLE");
+                    String cantidad=JPaneInserta("Inserte la cantidad deseada");
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
 
                     break;
                 }
