@@ -35,7 +35,6 @@ public class Menu {
     //Menú de encendidio 
     public void iniciarTPV() {
 
-        ImageIcon iconoFavicon = new ImageIcon("src/main/java/DawFood/favicon.png");
         CartaComida carta = new CartaComida();
         Carrito carrito = new Carrito();
         Tpv ventas = new Tpv();
@@ -331,13 +330,13 @@ public class Menu {
                 //Opcion apertura menú BEBIDAS
                 case 1 -> {
                     System.out.println("bebida");
-                    //cartaBebidas(carta, carrito, ventas);
+                    cartaBebidas(carta, carrito, ventas);
                     break;
                 }
                 //Opcion apertura menú POSTRES
                 case 2 -> {
-                    System.out.println("Ensalada");
-                    cartaEnsalada(carta, carrito, ventas);
+                    System.out.println("Postres");
+                    //cartaPostres(carta, carrito, ventas);
                     break;
                 }
 
@@ -357,8 +356,8 @@ public class Menu {
                     String numeroTarjeta = JPaneInserta("Inserte el numero de tarjeta");
                     JOptionPaneMuestra(carrito.ProcesarCompra(numeroTarjeta));
 
-                    /*Mostrar el estado de la venta*/
- /*Eliminar todos los productos del carrito*/
+                    //Mostrar el estado de la venta
+                    //Eliminar todos los productos del carrito
                     break;
                 }
                 //Opcion volver menu encendido
@@ -419,6 +418,8 @@ public class Menu {
     }
 
     private void cartaHamburguesa(CartaComida carta, Carrito carrito, Tpv ventas) {
+        ArrayList<Producto> comidas = carta.get_Comidas();
+
         //Eleccion menu 
         String[] botones1 = {"SIMPLE", "MCFIT", "CON QUESO", "Menú Incio", "<-"};
         boolean continuar1 = true;
@@ -430,26 +431,35 @@ public class Menu {
             switch (variable1) {
 
                 case 0 -> {
-                    System.out.println("SIMPLE");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa simple");
-                    String cantidad = JPaneInserta("Inserte la cantidad deseada");
-                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
 
+                    System.out.println("SIMPLE");
+                    String nombreProducto = "Hamburguesa simple";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(comidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
                 }
 
                 case 1 -> {
                     System.out.println("MCFIT");
-                    carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa Mcfit[Pollo]");
-                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
+                    String nombreProducto = "Hamburguesa Mcfit[Pollo]";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(comidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
                 }
 
                 case 2 -> {
                     System.out.println("CON QUESO");
-                    carta.devolverPorNombre(E_Categoria.Comida, "Hamburguesa con queso");
-                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Hamburguesa);
+                    String nombreProducto = "Hamburguesa con queso";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(comidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
+
                 }
 
                 case 3 -> {
@@ -477,6 +487,7 @@ public class Menu {
     }
 
     private void cartaPatatas(CartaComida carta, Carrito carrito, Tpv ventas) {
+        ArrayList<Producto> comidas = carta.get_Comidas();
         //Eleccion menu 
         String[] botones1 = {"FINAS", "CLÁSICAS", "GAJO", "Menú Incio", "<-"};
         boolean continuar1 = true;
@@ -488,8 +499,11 @@ public class Menu {
 
                 case 0 -> {
                     System.out.println("FINAS");
-                    carta.devolverPorNombre(E_Categoria.Comida, "Patatas finas");
-                    mostrarYSeleccionar(carta, carrito, E_Categoria.Comida, E_SubCategoria.Patatas);
+                    String nombreProducto = "Patatas finas";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(comidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Comida, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
                 }
 
@@ -535,7 +549,7 @@ public class Menu {
 
         do {
 
-            int variable1 = JOptionPane.showOptionDialog(null, "Carta POSTRES: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
+            int variable1 = JOptionPane.showOptionDialog(null, "Carta ENSALADAS: ", "DawFood", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("src/main/java/DawFood/favicon.png"), botones1, botones1[0]);
             switch (variable1) {
 
                 case 0 -> {
@@ -561,6 +575,239 @@ public class Menu {
 
                 case 3 -> {
                     //Hay que llamar al carrito
+                    carrito.VerCarrito();
+                    break;
+                }
+                case 4 -> {
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+
+                //Cuando pulsa la X salta al inicio de user
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Hasta pronto", "DawFood", variable1, new ImageIcon("src/main/java/DawFood/favicon.png"));
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+            }
+
+        } while (continuar1);
+    }
+
+    private void cartaBebidas(CartaComida carta, Carrito carrito, Tpv ventas) {
+        //Eleccion menu 
+        String[] botones1 = {"CERVEZA", "REFRESCOS AZ", "REFRESCOS CERO", "Ver Carriro", "<-"};
+        boolean continuar1 = true;
+
+        do {
+
+            int variable1 = JOptionPane.showOptionDialog(
+                    null,
+                    "Carta BEBIDAS: ",
+                    "DawFood",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("src/main/java/DawFood/favicon.png"),
+                    botones1, botones1[0]);
+            switch (variable1) {
+
+                case 0 -> {
+                    System.out.println("CERVEZA");
+                    mostrarCervezas(carta, carrito, ventas);
+                    break;
+                }
+
+                case 1 -> {
+                    System.out.println("REFRESCOS AZ");
+                    mostrarRefrescos(carta, carrito, ventas);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("REFRESCOS CERO");
+                    mostrarRefrescosCero(carta, carrito, ventas);
+                    break;
+                }
+
+                case 3 -> {
+                    //Llamar al carrito
+                    carrito.VerCarrito();
+                    break;
+                }
+                case 4 -> {
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+
+                //Cuando pulsa la X salta al inicio de user
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Hasta pronto", "DawFood", variable1, new ImageIcon("src/main/java/DawFood/favicon.png"));
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+            }
+
+        } while (continuar1);
+    }
+
+    private void mostrarCervezas(CartaComida carta, Carrito carrito, Tpv ventas) {
+        //Eleccion menu 
+        String[] botones1 = {"CERVEZA", "CERVEZA 0%0", "DawFood DobleLupulo", "Ver Carriro", "<-"};
+        boolean continuar1 = true;
+
+        do {
+
+            int variable1 = JOptionPane.showOptionDialog(
+                    null,
+                    "Carta CERVEZAS: ",
+                    "DawFood",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("src/main/java/DawFood/favicon.png"),
+                    botones1, botones1[0]);
+            switch (variable1) {
+
+                case 0 -> {
+                    System.out.println("CERVEZA");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Ceveza");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
+                    break;
+                }
+
+                case 1 -> {
+                    System.out.println("CERVEZA 0%0");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Cerveza sin");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("DawFood DobleLupulo");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Cerveza DawFood - Doble lupulo");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Cervezas);
+                    break;
+                }
+
+                case 3 -> {
+                    //Llamar al carrito
+                    carrito.VerCarrito();
+                    break;
+                }
+                case 4 -> {
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+
+                //Cuando pulsa la X salta al inicio de user
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Hasta pronto", "DawFood", variable1, new ImageIcon("src/main/java/DawFood/favicon.png"));
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+            }
+
+        } while (continuar1);
+    }
+
+    private void mostrarRefrescos(CartaComida carta, Carrito carrito, Tpv ventas) {
+        //Eleccion menu 
+        String[] botones1 = {"PEPSI", "KAS", "NESTEA", "Ver Carriro", "<-"};
+        boolean continuar1 = true;
+
+        do {
+
+            int variable1 = JOptionPane.showOptionDialog(
+                    null,
+                    "Carta REFRESCOS: ",
+                    "DawFood",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("src/main/java/DawFood/favicon.png"),
+                    botones1, botones1[0]);
+            switch (variable1) {
+
+                case 0 -> {
+                    System.out.println("PEPSI");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Pepsi");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Azucaradas);
+                    break;
+                }
+
+                case 1 -> {
+                    System.out.println("KAS");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Kas");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Azucaradas);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("NESTEA");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Nestea");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.Azucaradas);
+                    break;
+                }
+
+                case 3 -> {
+                    //Llamar al carrito
+                    carrito.VerCarrito();
+                    break;
+                }
+                case 4 -> {
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+
+                //Cuando pulsa la X salta al inicio de user
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Hasta pronto", "DawFood", variable1, new ImageIcon("src/main/java/DawFood/favicon.png"));
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+            }
+
+        } while (continuar1);
+    }
+
+    private void mostrarRefrescosCero(CartaComida carta, Carrito carrito, Tpv ventas) {
+        //Eleccion menu 
+        String[] botones1 = {"PEPSI MAX", "KAS MAX", "AQUARADE MAX", "Ver Carriro", "<-"};
+        boolean continuar1 = true;
+
+        do {
+
+            int variable1 = JOptionPane.showOptionDialog(
+                    null,
+                    "Carta REFRESCOS CERO: ",
+                    "DawFood",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("src/main/java/DawFood/favicon.png"),
+                    botones1, botones1[0]);
+            switch (variable1) {
+
+                case 0 -> {
+                    System.out.println("PEPSI MAX");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Pepsi Max");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
+                    break;
+                }
+
+                case 1 -> {
+                    System.out.println("KAS MAX");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Kas Max");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("AQUARADE MAX");
+                    carta.devolverPorNombre(E_Categoria.Bebida, "Aquarade Max");
+                    mostrarYSeleccionar(carta, carrito, E_Categoria.Bebida, E_SubCategoria.SinAzucar);
+                    break;
+                }
+
+                case 3 -> {
+                    //Llamar al carrito
                     carrito.VerCarrito();
                     break;
                 }
