@@ -648,8 +648,7 @@ public class Menu {
 
                 case 3 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
-                    break;
+                    JOptionPaneMuestra(carrito.VerCarrito());
                 }
                 case 4 -> {
                     modoUserIni(carta, carrito, ventas);
@@ -717,7 +716,7 @@ public class Menu {
 
                 case 3 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
+                    JOptionPaneMuestra(carrito.VerCarrito());
                     break;
                 }
                 case 4 -> {
@@ -786,7 +785,7 @@ public class Menu {
 
                 case 3 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
+                    JOptionPaneMuestra(carrito.VerCarrito());
                     break;
                 }
                 case 4 -> {
@@ -855,7 +854,7 @@ public class Menu {
 
                 case 3 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
+                    JOptionPaneMuestra(carrito.VerCarrito());
                     break;
                 }
                 case 4 -> {
@@ -893,19 +892,19 @@ public class Menu {
 
                case 0 -> {
                     System.out.println("HELADOS");
-                    mostrarCervezas(carta, carrito, ventas);
+                    mostrarHelados(carta, carrito, ventas);
                     break;
                 }
 
                 case 1 -> {
                     System.out.println("POSTRES CASEROS");
-                    mostrarRefrescos(carta, carrito, ventas);
+                    mostrarPCaseros(carta, carrito, ventas);
                     break;
                 }
                
                 case 2 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
+                    JOptionPaneMuestra(carrito.VerCarrito());
                     break;
                 }
                 case 3 -> {
@@ -925,17 +924,17 @@ public class Menu {
         } while (continuar1);
     }
      
-     private void mostrarHelados(CartaComida carta, Carrito carrito, Tpv ventas) {
+    private void mostrarHelados(CartaComida carta, Carrito carrito, Tpv ventas) {
          ArrayList<Producto> bebidas = carta.get_Bebidas();
         //Eleccion menu 
-        String[] botones1 = {"PEPSI MAX", "KAS MAX", "AQUARADE MAX", "Ver Carriro", "<-"};
+        String[] botones1 = {"CAFE HELADO", "MCDAWFLURRY", "CONO CHOCONATA", "Ver Carriro", "<-"};
         boolean continuar1 = true;
 
         do {
 
             int variable1 = JOptionPane.showOptionDialog(
                     null,
-                    "Carta REFRESCOS CERO: ",
+                    "Carta HELADOS: ",
                     "DawFood",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
@@ -944,38 +943,107 @@ public class Menu {
             switch (variable1) {
 
                 case 0 -> {
-                    System.out.println("PEPSI MAX");
-                    String nombreProducto = "Pepsi Max";
+                    System.out.println("CAFE HELADO");
+                    String nombreProducto = "CafeConHelado";
                     String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
                     String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Bebida, nombreProducto);
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
                     carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;                 
                 }
 
                 case 1 -> {
-                    System.out.println("KAS MAX");
-                    String nombreProducto = "Kas Max";
+                    System.out.println("MCDAWFLURRY");
+                    String nombreProducto = "McDawFlurry";
                     String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
                     String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Bebida, nombreProducto);
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
                     carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
                 }
 
                 case 2 -> {
-                    System.out.println("AQUARADE MAX");
-                    String nombreProducto = "Aquarade Max";
+                    System.out.println("CONO CHOCONATA");
+                    String nombreProducto = "ConoChocolateNata";
                     String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
                     String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
-                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Bebida, nombreProducto);
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
                     carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
                     break;
                 }
 
                 case 3 -> {
                     //Llamar al carrito
-                    carrito.VerCarrito();
+                    JOptionPaneMuestra(carrito.VerCarrito());
+                    break;
+                }
+                case 4 -> {
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+
+                //Cuando pulsa la X salta al inicio de user
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Hasta pronto", "DawFood", variable1, new ImageIcon("src/main/java/DawFood/favicon.png"));
+                    modoUserIni(carta, carrito, ventas);
+                    break;
+                }
+            }
+
+        } while (continuar1);
+    }
+    
+    private void mostrarPCaseros(CartaComida carta, Carrito carrito, Tpv ventas) {
+         ArrayList<Producto> bebidas = carta.get_Bebidas();
+        //Eleccion menu 
+        String[] botones1 = {"MOCHI", "YOGUR CON TOPPIN", "TARTA DE QUESO", "Ver Carriro", "<-"};
+        boolean continuar1 = true;
+
+        do {
+
+            int variable1 = JOptionPane.showOptionDialog(
+                    null,
+                    "Carta POSTRES CASEROS: ",
+                    "DawFood",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("src/main/java/DawFood/favicon.png"),
+                    botones1, botones1[0]);
+            switch (variable1) {
+
+                case 0 -> {
+                    System.out.println("MOCHI");
+                    String nombreProducto = "Mochi";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
+                    break;                 
+                }
+
+                case 1 -> {
+                    System.out.println("YOGUR CON TOPPIN");
+                    String nombreProducto = "Yogur con toppin";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.println("TARTA DE QUESO");
+                    String nombreProducto = "Tarta de queso";
+                    String informacionHamburguesa = carta.obtenerInformacionProducto(bebidas, nombreProducto);
+                    String cantidad = JPaneInserta(informacionHamburguesa + "\nInserte la cantidad deseada");
+                    Producto hamburguesa = carta.devolverPorNombre(E_Categoria.Postre, nombreProducto);
+                    carrito.AñadirElemento(hamburguesa, Integer.parseInt(cantidad));
+                    break;
+                }
+
+                case 3 -> {
+                    //Llamar al carrito
+                    JOptionPaneMuestra(carrito.VerCarrito());
                     break;
                 }
                 case 4 -> {

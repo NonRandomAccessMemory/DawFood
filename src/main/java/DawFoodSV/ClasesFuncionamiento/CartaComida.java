@@ -34,8 +34,8 @@ public class CartaComida {
         comidas.add(new Producto(8, "Ensalada cesar", "MixLechuga, pollo y salsa cesar", E_Categoria.Comida, E_SubCategoria.Ensalada, 8.99, E_Iva.Siete, 12));
         comidas.add(new Producto(9, "Ensalada DawFood", "MixLechugas, langostinos, salsa rosa", E_Categoria.Comida, E_SubCategoria.Ensalada, 9.99, E_Iva.Siete, 47));
 
-        postres.add(new Producto(10, "Mochi", "heladojapo", E_Categoria.Postre, E_SubCategoria.Helados, 4.99, E_Iva.Siete, 12));
-        postres.add(new Producto(11, "CafeConHelado", "helado Amuricano", E_Categoria.Postre, E_SubCategoria.PostresCaseros, 2.99, E_Iva.Siete, 12));
+        postres.add(new Producto(10, "Mochi", "Pastel Helado Japones", E_Categoria.Postre, E_SubCategoria.PostresCaseros, 4.99, E_Iva.Siete, 12));
+        postres.add(new Producto(11, "CafeConHelado", "Helado Amuricano", E_Categoria.Postre, E_SubCategoria.PostresCaseros, 2.99, E_Iva.Siete, 12));
         postres.add(new Producto(12, "McDawFlurry", "Helado con leche", E_Categoria.Postre, E_SubCategoria.Helados, 3.99, E_Iva.Siete, 12));
         postres.add(new Producto(13, "ConoChocolateNata", "Helado de cono con chocolate", E_Categoria.Postre, E_SubCategoria.Helados, 1.99, E_Iva.Siete, 12));
         postres.add(new Producto(14, "Yogur con toppin", "Yogur helado natural", E_Categoria.Postre, E_SubCategoria.PostresCaseros, 2.99, E_Iva.Siete, 12));
